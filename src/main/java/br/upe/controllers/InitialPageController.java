@@ -21,9 +21,8 @@ public class InitialPageController extends HttpServlet {
 			throws ServletException, IOException {
 		String dbUrl = System.getenv("DATABASE_URL");
 		System.out.println(dbUrl);
-		System.out.println(request.getContextPath());
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		//request.getRequestDispatcher("/views/index.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/index.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
