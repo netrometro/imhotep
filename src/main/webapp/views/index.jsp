@@ -5,7 +5,9 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
-		<title>Insert title here</title>
+		<title>Imhotep : Sistema de agendamento de consultas e exames</title>
+		
+		<link href="/imhotep/resources/style.css" rel="stylesheet" />
 	</head>
 	<body>
 		<h1>Hello world!</h1>
