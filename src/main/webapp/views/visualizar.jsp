@@ -6,6 +6,8 @@
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<"../views/menu.jsp"
+
 
 <!-- Bootstrap CSS -->
 <link
@@ -15,8 +17,13 @@
 	crossorigin="anonymous">
 
 <title>Lista de consultas disponíveis</title>
+
+
 </head>
 <body>
+	
+	
+	
 	<h1>Médicos Disponíveis</h1>
 	<h3>Hoje é Terça dia 01/04/2012</h3>
 
