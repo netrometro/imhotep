@@ -3,46 +3,72 @@
 
 <!DOCTYPE html>
 <html>
-<head>
 
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+<head>
+<title>Login Page</title>
+<!--Made with love by Mutiullah Samim -->
+
+<!--Bootsrap 4 CDN-->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
 
-<link rel="stylesheet" type="text/css" href="/views/css/style.css">
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<!--Fontawesome CDN-->
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+	integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+	crossorigin="anonymous">
+
+<!--Custom styles-->
+<link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
+
 <body>
+	<div class="container">
+		<div class="d-flex justify-content-center h-100">
+			<div class="card">
+				<div class="card-header">
+					<h3>Sign In</h3>
+					
+				</div>
+				<div class="card-body">
+					<form>
+						<div class="input-group form-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+							<input type="text" class="form-control" placeholder="E-mail/CRM ">
 
-
-	<div class="wrapper fadeInDown">
-		<div id="formContent">
-			<!-- Tabs Titles -->
-
-			<!-- Icon -->
-			<div class="fadeIn first">
-				<img src="views/img/logo.png" id="icon"
-					alt="User Icon" />
+						</div>
+						<div class="input-group form-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+							<input type="password" class="form-control"
+								placeholder="password">
+						</div>
+						<div class="row align-items-center remember">
+							<input type="checkbox">Remember Me
+						</div>
+						<div class="form-group">
+							<input type="submit" value="Login"
+								class="btn float-right login_btn">
+						</div>
+					</form>
+				</div>
+				<div class="card-footer">
+					<div class="d-flex justify-content-center links">
+						Don't have an account?<a href="#">Sign Up</a>
+					</div>
+					<div class="d-flex justify-content-center">
+						<a href="#">Forgot your password?</a>
+					</div>
+				</div>
 			</div>
-
-			<!-- Login Form -->
-			<form>
-				<input type="text" id="login" class="fadeIn second" name="login"
-					placeholder="login"> <input type="text" id="password"
-					class="fadeIn third" name="login" placeholder="password"> <input
-					type="submit" class="fadeIn fourth" value="Log In">
-			</form>
-
-			<!-- Remind Passowrd -->
-			<div id="formFooter">
-				<a class="underlineHover" href="#">Forgot Password?</a>
-			</div>
-
 		</div>
 	</div>
+
 	<script
 		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
 		integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
@@ -51,10 +77,6 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
 		integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
 		crossorigin="anonymous"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
-		crossorigin="anonymous"></script>
-
 </body>
+
 </html>
