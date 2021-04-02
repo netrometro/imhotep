@@ -1,7 +1,6 @@
 package br.upe.controllers;
 
 import java.io.IOException;
-import java.net.InetAddress;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,8 +18,6 @@ public class InitialPageController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		String dbUrl = System.getenv("DATABASE_URL");
-		System.out.println(dbUrl);
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		request.getRequestDispatcher("/views/index.jsp").forward(request, response);
 	}
