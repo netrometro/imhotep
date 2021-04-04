@@ -17,8 +17,6 @@ public class ExemploController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		String dbUrl = System.getenv("DATABASE_URL");
-		System.out.println(dbUrl);
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		request.getRequestDispatcher("/views/index.jsp").forward(request, response);
 	}
