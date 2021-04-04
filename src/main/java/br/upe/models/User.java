@@ -9,12 +9,21 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private String cpf;
-	private DateTime birthDate;
+	private String birthDate;//private DateTime birthDate;
 	private String password;
+	
+	public static final String TABLE_NAME = "_user";
+	public static final String ID = "id"; 
+	public static final String EMAIL = "email";
+	public static final String FIRST_NAME = "firstName";
+	public static final String LAST_NAME = "lastName";
+	public static final String CPF = "cpf";
+	public static final String BIRTH_DATE = "birthDate";
+	public static final String PASSWORD = "password";
 	
 	public User() {}
 
-	public User(int id, String email, String firstName, String lastName, String cpf, DateTime birthDate,
+	public User(int id, String email, String firstName, String lastName, String cpf, String birthDate,
 			String password) {
 		super();
 		this.id = id;
@@ -66,11 +75,12 @@ public class User {
 		this.cpf = cpf;
 	}
 
-	public DateTime getBirthDate() {
+
+	public String getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(DateTime birthDate) {
+	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
 	}
 
@@ -81,5 +91,13 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName + ", cpf="
+				+ cpf + ", birthDate=" + birthDate + ", password=" + password + "]";
+	}
+	
+	
 	
 }

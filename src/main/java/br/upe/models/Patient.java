@@ -9,7 +9,7 @@ public class Patient extends User{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Patient(int id, String email, String firstName, String lastName, String cpf, DateTime birthDate,
+	public Patient(int id, String email, String firstName, String lastName, String cpf, String birthDate,
 			String password) {
 		super(id, email, firstName, lastName, cpf, birthDate, password);
 		// TODO Auto-generated constructor stub

@@ -2,12 +2,19 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
   <display-name>imhotep</display-name>
   <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
-  
   <servlet-mapping>
     <servlet-name>default</servlet-name>
     <url-pattern>/resources/*</url-pattern>
   </servlet-mapping>
-  
+  <filter>
+    <display-name>UserLogged</display-name>
+    <filter-name>UserLogged</filter-name>
+    <filter-class>br.upe.util.filter.UserLogged</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>UserLogged</filter-name>
+    <url-pattern>/logged</url-pattern>
+  </filter-mapping>
 </web-app>

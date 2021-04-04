@@ -1,4 +1,4 @@
-package br.upe.controllers.db;
+package br.upe.dao.db;
 
 import java.sql.*;
 import java.util.logging.Level;
@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 public final class DBConection {
 
     private static final String usuario = "postgres";
-    private static final String senha = "admin";
+    private static final String senha = "root";
     private static final String url = "jdbc:postgresql://localhost/imhotep";
 
     public static Connection open() {
