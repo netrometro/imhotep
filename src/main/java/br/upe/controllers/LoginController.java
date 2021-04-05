@@ -56,6 +56,8 @@ public class LoginController extends HttpServlet {
 
             if (erros.size() == 0) {
 
+
+
                 try {
 
                     URI dbUri = new URI(System.getenv("DATABASE_URL"));
