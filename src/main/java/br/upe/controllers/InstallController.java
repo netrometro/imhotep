@@ -39,14 +39,24 @@ public class InstallController extends HttpServlet {
             dbContext.ensureDeletedDatabase();
             response.getWriter().append("Database Deleted\n");
             dbContext.ensureCreatedDatabase();
-            response.getWriter().append("Database Created");/*
+            response.getWriter().append("Database Created");
+
             UserRole userRole = new UserRole();
-            userRole.setName("AHAHAHAHAH");
+            userRole.setName("zezao");
+            userRole.setId(2);
+            userRole.setPassword("123");
+            userRole.setEmail("zezao@email.com");
+
+            UserRole user =  dbContext.getUserRoles().Create(userRole);
+            System.out.println("user"+user.toString());
+            /*
+
+
             userRole = dbContext.getUserRoles().Create(userRole);
             userRole.setName("Something else");
-            dbContext.getUserRoles().Create(userRole);
-            UserRole user =  dbContext.getUserRoles().ToArray().get(1);
-            response.getWriter().append(user.getName());
+            dserRole user =  dbContext.getUserRoles().ToArray().get(1);
+            responsbContext.getUserRoles().Create(userRole);
+            Ue.getWriter().append(user.getName());
             response.getWriter().append(dbContext.getUserRoles().ToArray().get(0).getName());
             userRole.setName("Changed");
             dbContext.getUserRoles().update(userRole);

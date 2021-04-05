@@ -1,6 +1,11 @@
 package br.upe.controllers;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -10,8 +15,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.upe.dao.UserDAO;
-import br.upe.models.User;
+import br.upe.model.entities.UserRole;
+import br.upe.service.DatabaseContext;
+import br.upe.service.core.DbSet;
 
 @WebServlet(name = "/login", urlPatterns = {"/login.jsp"})
 public class LoginController extends HttpServlet {
@@ -22,46 +28,8 @@ public class LoginController extends HttpServlet {
     }
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, URISyntaxException, SQLException {
 
-
-        ArrayList<String> erros = new ArrayList<String>();
-        System.out.println("middlerewes login");
-        if (request.getParameter("bOK") != null) {
-            String login = request.getParameter("login");
-            String senha = request.getParameter("senha");
-            if (login == null || login.isEmpty()) {
-                erros.add("Login não informado!");
-            }
-            if (senha == null || senha.isEmpty()) {
-                erros.add("Senha não informada!");
-            }
-            if (erros.size() == 0) {
-                UserDAO dao = new UserDAO();
-                User user = dao.getSingle(login);
-                System.out.println(user.toString());
-                if (user != null) {
-                    if (user.getPassword().equalsIgnoreCase(senha)) {
-                        request.getSession().setAttribute("usuarioLogado", user);
-                        response.sendRedirect("logado/menu.jsp");
-                        return;
-                    } else {
-                        erros.add("Senha inválida!");
-                    }
-                } else {
-                    erros.add("Usuário não encontrado!");
-                }
-            }
-
-        }
-        request.getSession().invalidate();
-
-
-        request.setAttribute("mensagens", erros);
-
-        String URL = "/WEB-INF/view/index.jsp";
-        RequestDispatcher rd = request.getRequestDispatcher(URL);
-        rd.forward(request, response);
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
@@ -73,8 +41,59 @@ public class LoginController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		
-	
+
+        ArrayList<String> erros = new ArrayList<String>();
+
+        if (request.getParameter("bOK") != null) {
+            String login = request.getParameter("login");
+            String senha = request.getParameter("senha");
+            if (login == null || login.isEmpty()) {
+                erros.add("Login não informado!");
+            }
+            if (senha == null || senha.isEmpty()) {
+                erros.add("Senha não informada!");
+            }
+
+            if (erros.size() == 0) {
+
+                try {
+
+                    URI dbUri = new URI(System.getenv("DATABASE_URL"));
+                    String username = dbUri.getUserInfo().split(":")[0];
+                    String password = dbUri.getUserInfo().split(":")[1];
+                    String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
+                    Class.forName("org.postgresql.Driver");
+                    Connection conn = DriverManager.getConnection(dbUrl, username, password);
+                    DatabaseContext dbContext = new DatabaseContext(conn);
+
+                    UserRole user = new UserRole();
+                    user = dbContext.getUserRoles().FindByField("cpf", login);
+                    //UserRole user = new UserRole(1, "ze", "ze@gmail.com", "123");
+
+                    System.out.println("User: "+user.toString());
+
+                    if (user != null) {
+                        if (user.getPassword().equalsIgnoreCase(senha)) {
+                            request.getSession().setAttribute("userlogged", user);
+                            response.sendRedirect("logged/menu.jsp");
+                            return;
+                        } else {
+                            erros.add("Senha inválida!");
+                        }
+                    } else {
+                        erros.add("Usuário não encontrado!");
+                    }
+
+                } catch (Exception e) {
+
+                }
+            }
+        }
+
+        request.getSession().invalidate();
+        request.setAttribute("mensagens", erros);
+
+        request.getRequestDispatcher("/views/index.jsp").forward(request, response);
 	}
 
 }

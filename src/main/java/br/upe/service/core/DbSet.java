@@ -23,6 +23,40 @@ public class DbSet<T> implements IDbSet<T> {
     }
 
     @Override
+    public T FindByField(String field, String value) {
+        StringBuilder commandBuilder = new StringBuilder();
+        commandBuilder.append("SELECT * FROM " + tableName + " WHERE "+field+"='" + value + "'");
+        String command = commandBuilder.toString();
+        try {
+            ResultSet queryResult = conn.createStatement().executeQuery(command);
+            queryResult.next();
+            Object object = createObjectFromQuery(queryResult);
+            return (T) object;
+        } catch (SQLException e) {
+            return null;
+        } catch (InstantiationException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (SecurityException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
     public T Find(Object id) {
         StringBuilder commandBuilder = new StringBuilder();
         commandBuilder.append("SELECT * FROM " + tableName + " WHERE id=" + id.toString());

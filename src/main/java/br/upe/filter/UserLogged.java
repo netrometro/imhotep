@@ -1,5 +1,10 @@
-package br.upe.util.filter;
+package br.upe.filter;
 
+import br.upe.model.entities.UserRole;
+
+import javax.servlet.*;
+import javax.servlet.annotation.*;
+import java.io.IOException;
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -12,9 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import br.upe.models.User;
-
-@WebFilter(filterName = "UsuarioLogado", urlPatterns = {"/logado/*"})
+@WebFilter(filterName = "UserLogged", urlPatterns = {"/logged/*"})
 public class UserLogged implements Filter {
 
     private String contextPath;
@@ -24,15 +27,16 @@ public class UserLogged implements Filter {
 
     @Override
     public void doFilter(ServletRequest request,
-            ServletResponse response,
-            FilterChain chain)
+                         ServletResponse response,
+                         FilterChain chain)
             throws IOException, ServletException {
 
         HttpServletResponse res = (HttpServletResponse) response;
         HttpServletRequest req = (HttpServletRequest) request;
         HttpSession session = req.getSession();
 
-        User u = (User) session.getAttribute("userlogged");
+        UserRole u = (UserRole) session.getAttribute("userlogged");
+
         if (u == null) {
             session.invalidate();
             res.sendRedirect(contextPath + "/index.jsp");

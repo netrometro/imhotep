@@ -1,4 +1,4 @@
-package br.upe.controllers;
+package br.upe.controllers.logged;
 
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -8,14 +8,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "Menu", urlPatterns = {"/logado/menu.jsp"})
+@WebServlet(name = "Menu", urlPatterns = {"/logged/menu.jsp"})
 public class MenuController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher rd = request.getRequestDispatcher(
-                "/WEB-INF/view/logado/menu.jsp");
-        rd.forward(request, response);
+        request.getRequestDispatcher("/views/logged/menu.jsp").forward(request, response);
     }
 
     @Override
