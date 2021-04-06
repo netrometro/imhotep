@@ -12,3 +12,4 @@ target/*
 .history/
 /target/
 /bin
+/.idea

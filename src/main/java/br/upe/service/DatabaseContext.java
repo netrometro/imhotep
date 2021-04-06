@@ -4,20 +4,20 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import br.upe.model.entities.UserRole;
+import br.upe.model.entities.User;
 import br.upe.service.core.DbSet;
 import br.upe.service.core.IDbSet;
 
 public class DatabaseContext {
     private Connection conn;
-    private IDbSet<UserRole> userRoles;
+    private IDbSet<User> userRoles;
 
     public DatabaseContext(Connection databaseConnection){        
         conn = databaseConnection;
-        userRoles = new DbSet<UserRole>(databaseConnection, UserRole.class);
+        userRoles = new DbSet<User>(databaseConnection, User.class);
     }
 
-    public IDbSet<UserRole> getUserRoles() {
+    public IDbSet<User> getUserRoles() {
         return userRoles;
     }
 

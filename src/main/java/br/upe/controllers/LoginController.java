@@ -8,16 +8,14 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.upe.model.entities.UserRole;
+import br.upe.model.entities.User;
 import br.upe.service.DatabaseContext;
-import br.upe.service.core.DbSet;
 
 @WebServlet(name = "/login", urlPatterns = {"/login.jsp"})
 public class LoginController extends HttpServlet {
@@ -29,13 +27,11 @@ public class LoginController extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, URISyntaxException, SQLException {
-
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		System.out.println("login get");
+
 		request.getRequestDispatcher("/views/login.jsp").forward(request, response);
 	}
 
@@ -56,8 +52,6 @@ public class LoginController extends HttpServlet {
 
             if (erros.size() == 0) {
 
-
-
                 try {
 
                     URI dbUri = new URI(System.getenv("DATABASE_URL"));
@@ -68,7 +62,7 @@ public class LoginController extends HttpServlet {
                     Connection conn = DriverManager.getConnection(dbUrl, username, password);
                     DatabaseContext dbContext = new DatabaseContext(conn);
 
-                    UserRole user = new UserRole();
+                    User user = new User();
                     user = dbContext.getUserRoles().FindByField("cpf", login);
                     //UserRole user = new UserRole(1, "ze", "ze@gmail.com", "123");
 
@@ -77,7 +71,7 @@ public class LoginController extends HttpServlet {
                     if (user != null) {
                         if (user.getPassword().equalsIgnoreCase(senha)) {
                             request.getSession().setAttribute("userlogged", user);
-                            response.sendRedirect("logged/menu.jsp");
+                            response.sendRedirect("logged/index.jsp");
                             return;
                         } else {
                             erros.add("Senha inválida!");
@@ -95,7 +89,6 @@ public class LoginController extends HttpServlet {
         request.getSession().invalidate();
         request.setAttribute("mensagens", erros);
 
-        request.getRequestDispatcher("/views/index.jsp").forward(request, response);
+        request.getRequestDispatcher("/views/login.jsp").forward(request, response);
 	}
-
 }

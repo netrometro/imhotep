@@ -1,10 +1,7 @@
 package br.upe.filter;
 
-import br.upe.model.entities.UserRole;
+import br.upe.model.entities.User;
 
-import javax.servlet.*;
-import javax.servlet.annotation.*;
-import java.io.IOException;
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -22,20 +19,17 @@ public class UserLogged implements Filter {
 
     private String contextPath;
 
-    public UserLogged() {
-    }
+    public UserLogged() {}
 
     @Override
-    public void doFilter(ServletRequest request,
-                         ServletResponse response,
-                         FilterChain chain)
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
 
         HttpServletResponse res = (HttpServletResponse) response;
         HttpServletRequest req = (HttpServletRequest) request;
         HttpSession session = req.getSession();
 
-        UserRole u = (UserRole) session.getAttribute("userlogged");
+        User u = (User) session.getAttribute("userlogged");
 
         if (u == null) {
             session.invalidate();
@@ -45,8 +39,11 @@ public class UserLogged implements Filter {
             res.setHeader("Pragma", "no-cache");
             res.setHeader("Expires", "-1");
             chain.doFilter(request, response);
+
+            System.out.println(u.toString());
         }
     }
+
     @Override
     public void destroy() {
     }

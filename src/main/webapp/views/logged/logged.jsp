@@ -10,7 +10,7 @@
 	<h1>Menu do Sistema</h1>
 	<p>Olá ${sessionScope.usuarioLogado.nome}</p>
 	<ul>
-		<li><a href="/logout.jsp">Sair</a>
+		<li><a href="${pageContext.request.contextPath}/logout.jsp">Sair</a>">Sair</a>
 		</li>
 	</ul>
 </body>
