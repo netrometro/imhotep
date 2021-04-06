@@ -9,7 +9,7 @@
 </head>
 <body>
 
-	<%@include file="menu.jsp"%>
+	<%@include file="/menu.jsp"%>
 
 	<fieldset>
 		<legend>Formulário de cadastro de medico</legend>
