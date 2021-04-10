@@ -1,4 +1,4 @@
-package br.upe.filter;
+package br.upe.controllers.auth.filter;
 
 import br.upe.model.entities.User;
 

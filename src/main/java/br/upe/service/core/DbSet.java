@@ -25,7 +25,7 @@ public class DbSet<T> implements IDbSet<T> {
     @Override
     public T FindByField(String field, String value) {
         StringBuilder commandBuilder = new StringBuilder();
-        commandBuilder.append("SELECT * FROM " + tableName + " WHERE "+field+"='" + value + "'");
+        commandBuilder.append("SELECT * FROM " + tableName + " WHERE "+field+"=" + value + "");
         String command = commandBuilder.toString();
         try {
             ResultSet queryResult = conn.createStatement().executeQuery(command);
