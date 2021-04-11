@@ -3,6 +3,8 @@ package br.upe.model.entities;
 import br.upe.service.core.Column;
 import br.upe.service.core.Table;
 
+import java.util.Objects;
+
 @Table(name="users")
 public class
 User {
@@ -16,25 +18,33 @@ User {
     @Column(name="email")
     private String email;
 
-    @Column(name="password")
-    private String password;
-
-    @Column(name="user_role_id")
-    private int userRoleId;
-
-    @Column(name="crm")
-    private String crm;
+    @Column(name="cpf")
+    private String cpf;
 
     @Column(name="birthday")
     private String birthday;
 
+    @Column(name="password")
+    private String password;
+
+    @Column(name="crm")
+    private String crm;
+
+    @Column(name="user_role_id")
+    private int userRoleId;
+
     public User(){
     }
-    public User(int id, String name, String email, String password) {
+
+    public User(int id, String name, String email, String cpf, String birthday, String password, String crm, int userRoleId) {
         this.id = id;
         this.name = name;
         this.email = email;
+        this.cpf = cpf;
+        this.birthday = birthday;
         this.password = password;
+        this.crm = crm;
+        this.userRoleId = userRoleId;
     }
 
     public int getId() {
@@ -61,28 +71,12 @@ User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public int getUserRoleId() {
-        return userRoleId;
-    }
-
-    public void setUserRoleId(int userRoleId) {
-        this.userRoleId = userRoleId;
-    }
-
-    public String getCrm() {
-        return crm;
-    }
-
-    public void setCrm(String crm) {
-        this.crm = crm;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getBirthday() {
@@ -93,16 +87,54 @@ User {
         this.birthday = birthday;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getCrm() {
+        return crm;
+    }
+
+    public void setCrm(String crm) {
+        this.crm = crm;
+    }
+
+    public int getUserRoleId() {
+        return userRoleId;
+    }
+
+    public void setUserRoleId(int userRoleId) {
+        this.userRoleId = userRoleId;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", userRoleId=" + userRoleId +
-                ", crm='" + crm + '\'' +
+                ", cpf='" + cpf + '\'' +
                 ", birthday='" + birthday + '\'' +
+                ", password='" + password + '\'' +
+                ", crm='" + crm + '\'' +
+                ", userRoleId=" + userRoleId +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id == user.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

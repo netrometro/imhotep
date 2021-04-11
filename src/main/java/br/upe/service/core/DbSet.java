@@ -33,7 +33,7 @@ public class DbSet<T> implements IDbSet<T> {
             Object object = createObjectFromQuery(queryResult);
             return (T) object;
         } catch (SQLException e) {
-            return null;
+             return null;
         } catch (InstantiationException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

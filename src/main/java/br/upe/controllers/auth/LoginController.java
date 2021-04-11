@@ -3,6 +3,7 @@ package br.upe.controllers.auth;
 import br.upe.model.entities.User;
 import br.upe.model.entities.UserRole;
 import br.upe.service.DatabaseContext;
+import br.upe.service.core.DbSet;
 import br.upe.util.DBUtils;
 
 import javax.servlet.ServletException;
@@ -59,10 +60,10 @@ public class LoginController extends HttpServlet {
 
                 DatabaseContext dbContext = new DatabaseContext(conn);
 
-                User user = dbContext.getUserRoles().FindByField("cpf", "'" + login + "'");
-                //User user = new User(1, "ze", "ze@gmail.com", "123");
-                //user.setBirthday("2021-01-11");
+                DbSet<User> dao = new DbSet<User>(conn, User.class);
+                User user = dao.FindByField("cpf", "'" + login + "'");
 
+                System.out.println("User from DB: "+user.toString() );
                 if (user != null) {
                     if (user.getPassword().equalsIgnoreCase(senha)) {
                         request.getSession().setAttribute("userlogged", user);

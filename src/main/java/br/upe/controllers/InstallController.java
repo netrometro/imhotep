@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.upe.model.entities.User;
+import br.upe.model.entities.UserRole;
 import br.upe.service.DatabaseContext;
 import br.upe.util.DBUtils;
 
@@ -35,6 +37,12 @@ public class InstallController extends HttpServlet {
             response.getWriter().append("Database Deleted\n");
             dbContext.ensureCreatedDatabase();
             response.getWriter().append("Database Created");
+
+            UserRole userRole = new UserRole(1, UserRole.DOCTOR);
+           // User user = new User(1, "teste", "teste@email.com", "100200300","12-10-2023", "teste123" , "123123123", new UserRole(1, UserRole.DOCTOR);
+
+            userRole = dbContext.getUserRoles().Create(userRole);
+            //user = dbContext.getUsers().Create(user);
 
             /*
             userRole = dbContext.getUserRoles().Create(userRole);
