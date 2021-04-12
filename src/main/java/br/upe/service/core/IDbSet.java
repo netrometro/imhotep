@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface IDbSet<T> {
     public T Find(Object id);
-    public T FindByField(String field, String value);
+    public T Find(String field, Object value);
     public T Create(T object);
     public List<T> ToArray();
     public boolean update(T object);
