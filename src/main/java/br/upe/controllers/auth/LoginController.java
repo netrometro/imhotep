@@ -79,7 +79,6 @@ public class LoginController extends HttpServlet {
             } catch (Exception e) {
 
             }
-
         }
 
         request.getSession().invalidate();

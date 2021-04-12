@@ -39,7 +39,7 @@ public class InstallController extends HttpServlet {
             response.getWriter().append("Database Created");
 
             UserRole userRole = new UserRole(1, UserRole.DOCTOR);
-           // User user = new User(1, "teste", "teste@email.com", "100200300","12-10-2023", "teste123" , "123123123", new UserRole(1, UserRole.DOCTOR);
+            //User user = new User(1, "teste", "teste@email.com", "100200300","12-10-2023", "teste123" , "123123123", 1);
 
             userRole = dbContext.getUserRoles().Create(userRole);
             //user = dbContext.getUsers().Create(user);
