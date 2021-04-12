@@ -10,15 +10,15 @@ import br.upe.service.core.IDbSet;
 
 public class DatabaseContext {
     private Connection conn;
-    private IDbSet<User> userRoles;
+    private IDbSet<User> user;
 
     public DatabaseContext(Connection databaseConnection){        
         conn = databaseConnection;
-        userRoles = new DbSet<User>(databaseConnection, User.class);
+        user = new DbSet<User>(databaseConnection, User.class);
     }
 
-    public IDbSet<User> getUserRoles() {
-        return userRoles;
+    public IDbSet<User> getUsers() {
+        return user;
     }
 
     /**
@@ -30,6 +30,7 @@ public class DatabaseContext {
         String command = "BEGIN; CREATE TABLE user_roles (id serial PRIMARY KEY, name varchar(20) NOT NULL); CREATE TABLE users (id serial PRIMARY KEY, name varchar(100) NOT NULL" +
                          ", email varchar NOT NULL, cpf varchar(11) NOT NULL, birthday date NOT NULL, password varchar NOT NULL, crm varchar, user_role_id integer, CONSTRAINT " +
                          "fk_user_role FOREIGN KEY(user_role_id) REFERENCES user_roles(id)); END TRANSACTION;";
+        command += "BEGIN; INSERT INTO user_roles(name) values('Médico'); END TRANSACTION;";
         st.execute(command);
         st.execute("COMMIT;");
     }

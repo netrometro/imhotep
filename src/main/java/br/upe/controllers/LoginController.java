@@ -1,10 +1,7 @@
 package br.upe.controllers;
 
 import java.io.IOException;
-import java.net.URI;
 import java.net.URISyntaxException;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -16,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.upe.model.entities.User;
 import br.upe.service.DatabaseContext;
+import br.upe.service.DatabaseUtils;
 
 @WebServlet(name = "/login", urlPatterns = {"/login.jsp"})
 public class LoginController extends HttpServlet {
@@ -53,17 +51,10 @@ public class LoginController extends HttpServlet {
             if (erros.size() == 0) {
 
                 try {
-
-                    URI dbUri = new URI(System.getenv("DATABASE_URL"));
-                    String username = dbUri.getUserInfo().split(":")[0];
-                    String password = dbUri.getUserInfo().split(":")[1];
-                    String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
-                    Class.forName("org.postgresql.Driver");
-                    Connection conn = DriverManager.getConnection(dbUrl, username, password);
-                    DatabaseContext dbContext = new DatabaseContext(conn);
+                    DatabaseContext dbContext = DatabaseUtils.getDatabaseContext();
 
                     User user = new User();
-                    user = dbContext.getUserRoles().FindByField("cpf", login);
+                    user = dbContext.getUsers().Find("cpf", login);
                     //UserRole user = new UserRole(1, "ze", "ze@gmail.com", "123");
 
                     System.out.println("User: "+user.toString());

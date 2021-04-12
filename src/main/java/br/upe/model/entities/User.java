@@ -28,6 +28,9 @@ User {
     @Column(name="birthday")
     private String birthday;
 
+    @Column(name="cpf")
+    private String cpf;
+
     public User(){
     }
     public User(int id, String name, String email, String password) {
@@ -35,6 +38,14 @@ User {
         this.name = name;
         this.email = email;
         this.password = password;
+    }
+
+    public String getCpf(){
+        return cpf;
+    }
+
+    public void setCpf(String cpf){
+        this.cpf = cpf;
     }
 
     public int getId() {
