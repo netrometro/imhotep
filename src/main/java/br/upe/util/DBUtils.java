@@ -6,7 +6,8 @@ import java.net.URISyntaxException;
 public class DBUtils {
 
     public static String url() throws URISyntaxException {
-        URI dbUri = new URI(System.getenv("DATABASE_URL"));
+        String database_url = System.getenv("DATABASE_URL");
+        URI dbUri = new URI(database_url);
         String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
         return dbUrl;
     }
