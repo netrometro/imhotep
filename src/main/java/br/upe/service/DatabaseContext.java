@@ -43,7 +43,7 @@ public class DatabaseContext {
 
     public void ensureDeletedDatabase() throws SQLException {
         Statement st = conn.createStatement();
-        String command = "BEGIN; DROP TABLE users; DROP TABLE user_roles; END TRANSACTION;";
+        String command = "BEGIN; DROP TABLE IF EXISTS users; DROP TABLE IF EXISTS user_roles; END TRANSACTION;";
         st.execute(command);
         st.execute("COMMIT;");
     }
