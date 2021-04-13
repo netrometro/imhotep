@@ -3,6 +3,7 @@ package br.upe.controllers.auth;
 import br.upe.model.entities.User;
 import br.upe.model.entities.UserRole;
 import br.upe.service.DatabaseContext;
+import br.upe.service.DatabaseUtils;
 import br.upe.service.core.DbSet;
 import br.upe.util.DBUtils;
 
@@ -55,13 +56,8 @@ public class LoginController extends HttpServlet {
         if (erros.size() == 0) {
 
             try {
-                Class.forName("org.postgresql.Driver");
-                Connection conn = DriverManager.getConnection( DBUtils.url(), DBUtils.userName(), DBUtils.password());
-
-                DatabaseContext dbContext = new DatabaseContext(conn);
-
-                DbSet<User> dao = new DbSet<User>(conn, User.class);
-                User user = dao.FindByField("cpf", "'" + login + "'");
+                DatabaseContext dbContext = DatabaseUtils.getDatabaseContext();
+                User user = dbContext.getUsers().Find("cpf", login);
 
                 System.out.println("User from DB: "+user.toString() );
                 if (user != null) {

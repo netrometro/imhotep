@@ -10,7 +10,7 @@
 </head>
 <body>
 
-	<%@include file="forms/menu.jsp"%>
+	<%@include file="includes/menu.jsp"%>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-6">
