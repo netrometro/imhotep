@@ -17,7 +17,9 @@
                 <form action="registration" method="POST">
                     <div class="form-group">
                     <label for="inputEmail1">Endereço de email</label>
-                    <input name="email" type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Seu email">
+                    <input name="email" type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Seu email"
+                           >
+
                     <small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu email, com ninguém.</small>
                     </div>
                     <div class="form-group">
@@ -26,20 +28,28 @@
                     </div>
                     <div class="form-group">
                         <label for="cpf">CPF</label>
-                        <input name="cpf" type="text" class="form-control" id="cpf" placeholder="Seu CPF">
+                        <input name="cpf" type="text" class="form-control cpf-mask" id="cpf" placeholder="000.000.000-00" maxlength="14">
                     </div>
                     <div class="form-group">
                         <label for="client-type">Tipo de usuário</label>
                         <div class="form-check" id="client-type">
-                            <input name="user_type" class="form-check-input" type="radio" name="flexRadioDefault" id="medico" checked>
+                            <input name="user_type" class="form-check-input" type="checkbox" name="flexRadioDefault" id="medico"
+                                   data-toggle="collapse" href="#crm" aria-expanded="false">
                             <label class="form-check-label" for="flexRadioDefault1">
                                 Médico
                             </label>
                         </div>
+                        <div class="form-check" id="client-type2">
+                            <input name="user_type" class="form-check-input" type="checkbox" name="flexRadioDefault" id="funcionario"
+                                   data-toggle="collapse" href="#crm" aria-expanded="false">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Funcionário
+                            </label>
+                        </div>
                     </div>
-                    <div class="form-group">
+                    <div class="panel-collapse collapse in" id="crm"  >
                         <label for="cpf">CRM</label>
-                        <input name="crm" type="text" class="form-control" id="cpf" placeholder="Seu CRM">
+                        <input name="crm" type="text" class="form-control cep-mask"  placeholder="00000000-0" maxlength="10" >
                     </div>
                     <div class="form-group">
                         <label for="birthday">Data de Nascimento</label>

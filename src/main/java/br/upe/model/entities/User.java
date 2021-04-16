@@ -10,6 +10,7 @@ public class
 User {
 
     @Column(name="id")
+
     private int id;
 
     @Column(name="name")
@@ -52,6 +53,7 @@ User {
     }
 
     public void setCpf(String cpf){
+
         this.cpf = cpf;
     }
 

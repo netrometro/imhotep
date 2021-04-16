@@ -32,7 +32,7 @@
                         <li><a class="dropdown-item" href="logout.jsp">Sair</a></li>
                     <% } else {%>
                         <li><a class="dropdown-item" href="login.jsp">Entrar</a></li>
-                        <li><a class="dropdown-item" href="#">Cadastrar-se</a></li>
+                        <li><a class="dropdown-item" href="registration">Cadastrar-se</a></li>
                     <% }%>
                 </ul>
             </div>

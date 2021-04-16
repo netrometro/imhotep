@@ -27,6 +27,7 @@ public class DbSet<T> implements IDbSet<T> {
         StringBuilder commandBuilder = new StringBuilder();
         commandBuilder.append("SELECT * FROM " + tableName + " WHERE "+field+"='" + value.toString() + "'");
         String command = commandBuilder.toString();
+
         try {
             ResultSet queryResult = conn.createStatement().executeQuery(command);
             queryResult.next();
@@ -161,12 +162,14 @@ public class DbSet<T> implements IDbSet<T> {
             }
             columns.append(columnName);
             String getMethodName = "get" + capitalize(types[i].getName());
+
             try {
                 Method method = object.getClass().getMethod(getMethodName);
                 values.append("'" + method.invoke(object).toString() + "'");
             } catch (NoSuchMethodException | SecurityException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
+
             } catch (IllegalAccessException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
