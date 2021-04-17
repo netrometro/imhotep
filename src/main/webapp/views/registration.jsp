@@ -35,14 +35,14 @@
                         <div class="form-check" id="client-type">
                             <input name="user_type" class="form-check-input" type="checkbox" name="flexRadioDefault" id="medico"
                                    data-toggle="collapse" href="#crm" aria-expanded="false">
-                            <label class="form-check-label" for="flexRadioDefault1">
+                            <label class="form-check-label">
                                 Médico
                             </label>
                         </div>
                         <div class="form-check" id="client-type2">
                             <input name="user_type" class="form-check-input" type="checkbox" name="flexRadioDefault" id="funcionario"
                                    data-toggle="collapse" href="#crm" aria-expanded="false">
-                            <label class="form-check-label" for="flexRadioDefault1">
+                            <label class="form-check-label" >
                                 Funcionário
                             </label>
                         </div>
@@ -59,7 +59,7 @@
                         <label for="exampleInputPassword1">Senha</label>
                         <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
                     </div>
-                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                    <a href="login.jsp" class="btn btn-primary" role="button" data-bs-toggle="button">Cadastrar</a>
                 </form>
             </div>
         </div>
