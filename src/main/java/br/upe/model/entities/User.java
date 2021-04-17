@@ -33,9 +33,6 @@ User {
     @Column(name="user_role_id")
     private int userRoleId;
 
-    @Column(name="cpf")
-    private String cpf;
-
     public User(){
     }
 
@@ -50,13 +47,6 @@ User {
         this.userRoleId = userRoleId;
     }
 
-    public String getCpf(){
-        return cpf;
-    }
-
-    public void setCpf(String cpf){
-        this.cpf = cpf;
-    }
 
     public int getId() {
         return id;

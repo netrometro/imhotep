@@ -2,5 +2,28 @@ html, body {
 	font-family: 'Bebas Neue';
 }
 
+#m-login{
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 
+.m-flex-row{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.m-flex-row div{
+	display: grid;
+}
+
+.m-flex-row p{
+	color: #fff;
+}
+
+.m-flex-row input{
+	margin-top: 1em;
+}
 

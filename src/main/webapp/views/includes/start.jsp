@@ -16,24 +16,6 @@
 
     <link href="<%= "/imhotep" %>/resources/css/style.css" rel="stylesheet" />
 
-    <style>
-        #m-login{
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .m-flex-row{
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-        }
-
-        .m-flex-row input{
-            margin-top: 1em;
-        }
-    </style>
-
     <title>Imhotep</title>
 
 </head>

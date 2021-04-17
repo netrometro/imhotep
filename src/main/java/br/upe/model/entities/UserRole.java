@@ -12,9 +12,9 @@ public class UserRole {
     @Column(name="name")
     private String name;
 
-    public static final String DOCTOR = "doctor";
-    public static final String EMPLOYEER = "employee";
-    public static final String PATIENT = "patient";
+    //public static final String DOCTOR = "doctor";
+    //public static final String EMPLOYEER = "employee";
+   // public static final String PATIENT = "patient";
 
     public UserRole(){}
 
