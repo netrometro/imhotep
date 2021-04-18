@@ -1,6 +1,9 @@
-package br.upe.controllers.auth.filter;
+package br.upe.controllers.auth.filter.specific;
 
 import br.upe.model.entities.User;
+import br.upe.model.entities.UserRole;
+import br.upe.service.DatabaseContext;
+import br.upe.service.DatabaseUtils;
 
 import java.io.IOException;
 import javax.servlet.Filter;
@@ -14,12 +17,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(filterName = "UserLogged", urlPatterns = {"/logged/*"})
-public class UserLogged implements Filter {
+@WebFilter(filterName = "EmployeeLogged", urlPatterns = {"/logged/employee/*"})
+public class EmployeeFilter implements Filter {
 
     private String contextPath;
 
-    public UserLogged() {}
+    public EmployeeFilter() {}
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -34,13 +37,19 @@ public class UserLogged implements Filter {
         if (u == null) {
             session.invalidate();
             res.sendRedirect(contextPath + "/index.jsp");
-        } else {
-            res.setHeader("Cache-control", "no-cache, no-store");
-            res.setHeader("Pragma", "no-cache");
-            res.setHeader("Expires", "-1");
-            chain.doFilter(request, response);
+        }else {
+            DatabaseContext dbContext = DatabaseUtils.getDatabaseContext();
+            UserRole userRole = dbContext.getUserRoles().Find(u.getUserRoleId());
 
-            System.out.println(u.toString());
+            if (!userRole.getName().equalsIgnoreCase(UserRole.EMPLOYEER)) {
+                res.sendRedirect(contextPath + "/index.jsp");
+                return;
+            }else{
+                res.setHeader("Cache-control", "no-cache, no-store");
+                res.setHeader("Pragma", "no-cache");
+                res.setHeader("Expires", "-1");
+                chain.doFilter(request, response);
+            }
         }
     }
 
@@ -52,5 +61,4 @@ public class UserLogged implements Filter {
     public void init(FilterConfig filterConfig) {
         this.contextPath = filterConfig.getServletContext().getContextPath();
     }
-
 }

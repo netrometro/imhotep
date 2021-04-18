@@ -253,6 +253,8 @@ public class DbSet<T> implements IDbSet<T> {
             NoSuchMethodException, SecurityException, SQLException {
         Object object = type.getDeclaredConstructor().newInstance();
         for (Field field : type.getDeclaredFields()) {
+            if (Modifier.isStatic(field.getModifiers()))
+                continue;
             String columnName = field.getAnnotation(Column.class).name();
             String fieldName = field.getName();
             String setMethodName = "set" + capitalize(fieldName);

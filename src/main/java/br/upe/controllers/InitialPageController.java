@@ -27,5 +27,4 @@ public class InitialPageController extends HttpServlet {
 		
 		doGet(request, response);
 	}
-
 }

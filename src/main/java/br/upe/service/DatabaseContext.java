@@ -36,7 +36,11 @@ public class DatabaseContext {
         Statement st =  conn.createStatement();
         String command = "BEGIN; CREATE TABLE user_roles (id serial PRIMARY KEY, name varchar(20) NOT NULL); CREATE TABLE users (id serial PRIMARY KEY, name varchar(100) NOT NULL" +
                          ", email varchar NOT NULL, cpf varchar(11) NOT NULL, birthday date NOT NULL, password varchar NOT NULL, crm varchar, user_role_id integer, CONSTRAINT " +
-                         "fk_user_role FOREIGN KEY(user_role_id) REFERENCES user_roles(id));INSERT INTO user_roles(name) values('Médico');END TRANSACTION;";
+                         "fk_user_role FOREIGN KEY(user_role_id) REFERENCES user_roles(id));" +
+                         "INSERT INTO user_roles(name) values('"+UserRole.DOCTOR+"');" +
+                         "INSERT INTO user_roles(name) values('"+UserRole.EMPLOYEER+"');" +
+                         "INSERT INTO user_roles(name) values('"+UserRole.PATIENT+"');" +
+                         "END TRANSACTION;";
         st.execute(command);
         st.execute("COMMIT;");
     }
