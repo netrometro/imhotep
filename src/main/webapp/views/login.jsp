@@ -37,15 +37,15 @@
 						<div class="form-group form-user">
 
 							<div class="form-check" id="client-type">
-								<input  name="user_type" class="form-check-input" type="checkbox" name="flexRadioDefault" id="medico"
+								<input class="form-check-input" type="checkbox" name="check-doctor" id="medico"
 									   data-toggle="collapse" href="#crm" aria-expanded="false">
 								<label class="form-check-label">
 									Médico
 								</label>
 							</div>
 
-							<div class="form-check" id="client-type2">
-								<input name="user_type" class="form-check-input" type="checkbox" name="flexRadioDefault" id="funcionario"
+							<div class="form-check" id="client-type2" >
+								<input class="form-check-input" type="checkbox" name="check-employee" id="funcionario"
 									   data-toggle="collapse" href="#crm" aria-expanded="false">
 								<label class="form-check-label" >
 									Funcionário

@@ -34,7 +34,7 @@ public class DatabaseContext {
             user.setUserRoleId(1);
         }else{
             user.setUserRoleId(0);
-        }*/
+        }
         user.setUserRoleId(1);
      */
     public void ensureCreatedDatabase() throws SQLException{
