@@ -5,119 +5,121 @@
 <html lang="pt-br">
 <head>
 	<meta charset="UTF-8">
-	<title>Cadastro</title>
+	<title>Login</title>
 	<link href="/imhotep/resources/css/login.css" rel="stylesheet"/>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 </head>
-<body >
-<div class="container">
-	<div class="content first-content">
-		<div class="first-column">
-			<h2 class="title title-primary">Welcome back</h2>
-			<p class="description description-primary">To keep connected with us </p>
-			<p class="description description-primary">please login with your personal info</p>
-			<button id="signin" class="btn btn-primary">sign in</button>
-		</div>
-		<div class="second-column">
-			<h2 class="title title-second">Create account</h2>
-			<form class="form" action="registration" method="POST">
+<body class="sign-in-js">
+	<div class="container">
+		<div class="content first-content">
+			<div class="first-column">
+				<h2 class="title title-primary">Welcome back</h2>
+				<p class="description description-primary">To keep connected with us </p>
+				<p class="description description-primary">please login with your personal info</p>
+				<button id="signin" class="btn btn-primary">sign in</button>
+			</div>
+			<div class="second-column">
+				<h2 class="title title-second">Create account</h2>
+				<form class="form" action="registration" method="POST">
 
-				<label for="name" class="label-input">
-					<i class="fas fa-user"></i>
-					<input name="name" type="text" class="form-control" id="name" placeholder="Seu nome completo">
-				</label>
+					<label for="name" class="label-input">
+						<i class="fas fa-user"></i>
+						<input name="name" type="text" class="form-control" id="name" placeholder="Seu nome completo">
+					</label>
 
-				<label for="cpf" class="label-input">
-					<i class="fas fa-id-card"></i>
-					<input name="cpf" type="text" class="form-control cpf-mask" id="cpf" placeholder="CPF" maxlength="14">
-				</label>
+					<label for="cpf" class="label-input">
+						<i class="fas fa-id-card"></i>
+						<input name="cpf" type="text" class="form-control cpf-mask" id="cpf" placeholder="CPF" maxlength="14">
 
-				<label for="client-type" class="label-input">Tipo de usuário</label>
-					<div class="form-group form-user">
-						<label for="client-type">
+					</label>
+
+					<label for="client-type" class="label-input">Tipo de usuário</label>
+						<div class="form-group form-user">
+
 							<div class="form-check" id="client-type">
-								<input name="user_type" class="form-check-input" type="checkbox" name="flexRadioDefault" id="medico"
+								<input  name="user_type" class="form-check-input" type="checkbox" name="flexRadioDefault" id="medico"
 									   data-toggle="collapse" href="#crm" aria-expanded="false">
 								<label class="form-check-label">
 									Médico
 								</label>
 							</div>
-						</label>
-						<div class="form-check" id="client-type2">
-							<input name="user_type" class="form-check-input" type="checkbox" name="flexRadioDefault" id="funcionario"
-								   data-toggle="collapse" href="#crm" aria-expanded="false">
-							<label class="form-check-label" >
-								Funcionário
+
+							<div class="form-check" id="client-type2">
+								<input name="user_type" class="form-check-input" type="checkbox" name="flexRadioDefault" id="funcionario"
+									   data-toggle="collapse" href="#crm" aria-expanded="false">
+								<label class="form-check-label" >
+									Funcionário
+								</label>
+							</div>
+
+						</div>
+
+						<div class="panel-collapse collapse in" id="crm"  >
+							<label for="crm" class="label-input">
+								<i class="fas fa-id-card"></i>
+								<input name="crm" type="text" class="form-control cep-mask"  placeholder="CRM" maxlength="10" >
 							</label>
 						</div>
-					</div>
 
-					<div class="panel-collapse collapse in" id="crm"  >
-						<label for="crm" class="label-input">
-							<i class="fas fa-id-card"></i>
-							<input name="crm" type="text" class="form-control cep-mask"  placeholder="CRM" maxlength="10" >
+					<label for="birthday" class="label-input">
+						<i class="far fa-calendar-alt"></i>
+						<input name="birthday" type="text" class="form-control" id="birthday" placeholder="Data de nascimento">
+					</label>
+
+					<label for="inputEmail1" class="label-input">
+						<i class="far fa-envelope"></i>
+						<input name="email" type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Seu email">
+					</label>
+
+					<label for="exampleInputPassword1" class="label-input">
+						<i class="fas fa-lock"></i>
+						<input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
+					</label>
+					<button class="btn btn-second"> sign up</button>
+					<p class="description description-second">Nunca vamos compartilhar seu email, com ninguém.</p>
+				</form>
+			</div>
+		</div>
+
+		<div class="content second-content">
+			<div class="first-column">
+				<h2 class="title title-primary">hello, friend</h2>
+				<p class="description description-primary">Entre your personal details </p>
+				<p class="description description-primary">and start journey with us</p>
+				<button id="signup" class="btn btn-primary">sign up</button>
+			</div>
+			<div class="second-column">
+				<span><img alt="logo" src="/imhotep/resources/img/logo.png" style="width: 30px"></span>
+				<h2 class="title title-second">Sign in</h2>
+				<form class="form" method="post" action="login.jsp">
+
+					<label  class="label-input">
+						<i class="fas fa-id-card"></i>
+						<input type="text" class="form-control" placeholder="cpf or crm"
+							   name="login" value="${param.login}" />
+					</label>
+
+					<label for="exampleInputPassword1" class="label-input">
+						<i class="fas fa-lock"></i>
+						<input name="password" type="password" class="form-control" placeholder="password">
+					</label>
+
+					<div class="form-check" id="rememberMe">
+						<input name="user_type" class="form-check-input" type="checkbox" name="flexRadioDefault" >
+						<label class="form-check-label">
+							Remember Me
 						</label>
 					</div>
 
-				<label for="birthday" class="label-input">
-					<i class="far fa-calendar-alt"></i>
-					<input name="birthday" type="text" class="form-control" id="birthday" placeholder="Data de nascimento">
-				</label>
+					<button  type="submit" class="btn btn-second">sign in</button>
+				</form></br>
 
-				<label for="inputEmail1" class="label-input">
-					<i class="far fa-envelope"></i>
-					<input name="email" type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Seu email">
-				</label>
 
-				<label for="exampleInputPassword1" class="label-input">
-					<i class="fas fa-lock"></i>
-					<input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
-				</label>
-				<button class="btn btn-second"> sign up</button>
-				<p class="description description-second">Nunca vamos compartilhar seu email, com ninguém.</p>
-			</form>
+					<a href="#" class="a a-esqueceu"> Esqueceu sua senha?</a>
+			</div>
 		</div>
 	</div>
-	<div class="content second-content">
-		<div class="first-column">
-			<h2 class="title title-primary">hello, friend</h2>
-			<p class="description description-primary">Entre your personal details </p>
-			<p class="description description-primary">and start journey with us</p>
-			<button id="signup" class="btn btn-primary">sign up</button>
-		</div>
-		<div class="second-column">
-			<span><img alt="logo" src="/imhotep/resources/img/logo.png" style="width: 30px"></span>
-			<h2 class="title title-second">Sign in</h2>
-			<form class="form" method="post" action="login.jsp">
-
-				<label  class="label-input">
-					<i class="fas fa-id-card"></i>
-					<input type="text" class="form-control" placeholder="cpf or crm"
-						   name="login" value="${param.login}" />
-				</label>
-
-				<label for="exampleInputPassword1" class="label-input">
-					<i class="fas fa-lock"></i>
-					<input name="password" type="password" class="form-control" placeholder="Senha">
-				</label>
-
-				<div class="form-check" id="rememberMe">
-					<input name="user_type" class="form-check-input" type="checkbox" name="flexRadioDefault" >
-					<label class="form-check-label">
-						Remember Me
-					</label>
-				</div></form></br>
-
-				<button href="index.jsp" class="btn btn-second">sign in</button></form></br>
-				<a href="#" class="a a-esqueceu"> Esqueceu sua senha?</a>
-			</form>
-		</div>
-
-	</div>
-
-
-</div>
-<script src="/imhotep/resources/js/app.js"></script>
+	<script src="/imhotep/resources/js/app.js"></script>
 </body>
 
 </html>

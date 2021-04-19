@@ -30,7 +30,12 @@ public class DatabaseContext {
 
     /**
      * Create database if it doesn't exists
-     * @throws SQLException
+     * @throws SQLExceptionif(request.getParameter("crm") != null){
+            user.setUserRoleId(1);
+        }else{
+            user.setUserRoleId(0);
+        }*/
+        user.setUserRoleId(1);
      */
     public void ensureCreatedDatabase() throws SQLException{
         Statement st =  conn.createStatement();

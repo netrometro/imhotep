@@ -1,6 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -15,27 +13,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
     <link href="<%= "/imhotep" %>/resources/css/style.css" rel="stylesheet" />
-
-    <style>
-        #m-login{
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .m-flex-row{
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-        }
-
-        .m-flex-row input{
-            margin-top: 1em;
-        }
-    </style>
-
     <title>Imhotep</title>
-
 </head>
 <body>
 <%@include file="menu.jsp" %>
+</body>
+</html>
+
+

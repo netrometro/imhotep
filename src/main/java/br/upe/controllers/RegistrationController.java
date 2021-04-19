@@ -34,13 +34,18 @@ public class RegistrationController extends HttpServlet{
 		user.setCpf(request.getParameter("cpf"));
 		user.setPassword(request.getParameter("password"));
         // will have to be changed when other user are allowed to register
-		user.setUserRoleId(1);
+        /*if(request.getParameter("crm") != null){
+            user.setUserRoleId(1);
+        }else{
+            user.setUserRoleId(0);
+        }*/
+        user.setUserRoleId(1);
 		user.setBirthday(request.getParameter("birthday"));
         user.setCrm(request.getParameter("crm"));
 
         DatabaseContext dbContext = DatabaseUtils.getDatabaseContext();
 
-        if (dbContext.getUsers().Find("cpf", user.getCpf()) == null && dbContext.getUsers().Find("crm", user.getCrm()) == null){
+        if (dbContext.getUsers().Find("cpf", user.getCpf()) == null ){
             dbContext.getUsers().Create(user);
             response.sendRedirect("login.jsp");
         } else {

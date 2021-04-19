@@ -1,7 +1,7 @@
 <%@ page import="br.upe.model.entities.User" %>
 <nav class="navbar navbar-expand" style="background-color: #203B4E;">
     <div class="container-fluid container">
-        <a class="navbar-brand" href="/imhotep/"><img src="./resources/img/logo.png" style="width: 1.5em;">Imhotep</a>
+        <a class="navbar-brand" href="/imhotep/"><img src="<%= "/imhotep" %>/resources/img/logo.png" style="width: 1.5em;">Imhotep</a>
         <button class="navbar-toggler" type="button"
                 data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false"
@@ -32,7 +32,7 @@
                         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/logout.jsp">Sair</a></li>
                     <% } else {%>
                         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/login.jsp">Entrar</a></li>
-                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/registration">Cadastrar-se</a></li>
+
                     <% }%>
                 </ul>
             </div>

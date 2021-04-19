@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.Console;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
@@ -38,7 +39,7 @@ public class LoginController extends HttpServlet {
         ArrayList<String> erros = new ArrayList<String>();
 
         String login = request.getParameter("login");
-        String senha = request.getParameter("senha");
+        String senha = request.getParameter("password");
 
         if (login == null || login.isEmpty()) {
             erros.add("Login não informado!");
@@ -51,7 +52,7 @@ public class LoginController extends HttpServlet {
             try {
                 DatabaseContext dbContext = DatabaseUtils.getDatabaseContext();
                 User user = dbContext.getUsers().Find("cpf", login);
-
+                System.out.println("Usuario logado " + user);
                 if (user != null) {
                     if (user.getPassword().equalsIgnoreCase(senha)) {
                         request.getSession().setAttribute("userlogged", user);
