@@ -29,10 +29,10 @@
                     <% if (u != null) { %>
                         <li><a class="dropdown-item" href="#">Perfil</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="logout.jsp">Sair</a></li>
+                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/logout.jsp">Sair</a></li>
                     <% } else {%>
-                        <li><a class="dropdown-item" href="login.jsp">Entrar</a></li>
-                        <li><a class="dropdown-item" href="registration">Cadastrar-se</a></li>
+                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/login.jsp">Entrar</a></li>
+                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/registration">Cadastrar-se</a></li>
                     <% }%>
                 </ul>
             </div>

@@ -3,6 +3,7 @@ package br.upe.service.core;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,7 +26,7 @@ public class DbSet<T> implements IDbSet<T> {
     @Override
     public T Find(String field, Object value) {
         StringBuilder commandBuilder = new StringBuilder();
-        commandBuilder.append("SELECT * FROM " + tableName + " WHERE "+field+"='" + value.toString() + "'");
+        commandBuilder.append("SELECT * FROM " + tableName + " WHERE " + field + "='" + value.toString() + "'");
         String command = commandBuilder.toString();
 
         try {
@@ -34,7 +35,7 @@ public class DbSet<T> implements IDbSet<T> {
             Object object = createObjectFromQuery(queryResult);
             return (T) object;
         } catch (SQLException e) {
-             return null;
+            return null;
         } catch (InstantiationException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -69,8 +70,7 @@ public class DbSet<T> implements IDbSet<T> {
         try {
             ResultSet queryResult = conn.createStatement().executeQuery(command);
             list = new ArrayList<T>();
-            while(queryResult.next())
-            {
+            while (queryResult.next()) {
                 list.add(createObjectFromQuery(queryResult));
             }
         } catch (SQLException e) {
@@ -104,20 +104,19 @@ public class DbSet<T> implements IDbSet<T> {
         StringBuilder command = new StringBuilder();
         command.append("UPDATE " + tableName + " SET ");
         String rowId = "";
-        for(int i = 0; i< fields.length; i++){
+        for (int i = 0; i < fields.length; i++) {
             String columnName = fields[i].getAnnotation(Column.class).name();
             String getMethodName = "get" + capitalize(fields[i].getName());
             Method method;
             try {
                 method = object.getClass().getMethod(getMethodName);
-                String fieldValue =  method.invoke(object).toString();
-                if (columnName.equals("id"))
-                {
+                String fieldValue = method.invoke(object).toString();
+                if (columnName.equals("id")) {
                     rowId = fieldValue;
                     continue;
                 }
-                command.append(columnName + " = '" +  fieldValue + "'");
-                if (i < (fields.length - 1)){
+                command.append(columnName + " = '" + fieldValue + "'");
+                if (i < (fields.length - 1)) {
                     command.append(", ");
                 }
             } catch (NoSuchMethodException | SecurityException e) {
@@ -155,11 +154,26 @@ public class DbSet<T> implements IDbSet<T> {
         StringBuilder columns = new StringBuilder();
         StringBuilder values = new StringBuilder();
         Field[] types = type.getDeclaredFields();
+
+        // to ignore statistical attributes
+        int numberOfNotStaticAttributes = 0;
+
         for (int i = 0; i < types.length; i++){
+            if (!Modifier.isStatic(types[i].getModifiers()))
+                numberOfNotStaticAttributes++;
+        }
+
+        for (int i = 0; i < types.length; i++) {
+            if (Modifier.isStatic(types[i].getModifiers()))
+                continue;
+
             String columnName = types[i].getAnnotation(Column.class).name();
             if (columnName.equals("id")) {
                 continue;
             }
+
+            numberOfNotStaticAttributes--;
+
             columns.append(columnName);
             String getMethodName = "get" + capitalize(types[i].getName());
 
@@ -180,19 +194,18 @@ public class DbSet<T> implements IDbSet<T> {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-            if (i < (types.length - 1))
-            {
+            if (i < (types.length - 1) && numberOfNotStaticAttributes > 1) {
                 columns.append(",");
                 values.append(",");
             }
         }
         String createCommand = "INSERT INTO " + tableName + "(" + columns.toString() + ") VALUES(" + values.toString() + ");";
         try {
-            PreparedStatement preparedStatement = conn.prepareStatement(createCommand, new String[] {"id"});
+            PreparedStatement preparedStatement = conn.prepareStatement(createCommand, new String[]{"id"});
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected == 0) return null;
             ResultSet rs = preparedStatement.getGeneratedKeys();
-            if (rs.next()){
+            if (rs.next()) {
                 Method method = object.getClass().getMethod("setId", int.class);
                 method.invoke(object, rs.getInt(1));
             }
@@ -240,6 +253,8 @@ public class DbSet<T> implements IDbSet<T> {
             NoSuchMethodException, SecurityException, SQLException {
         Object object = type.getDeclaredConstructor().newInstance();
         for (Field field : type.getDeclaredFields()) {
+            if (Modifier.isStatic(field.getModifiers()))
+                continue;
             String columnName = field.getAnnotation(Column.class).name();
             String fieldName = field.getName();
             String setMethodName = "set" + capitalize(fieldName);
