@@ -42,6 +42,7 @@ public class RegistrationController extends HttpServlet{
            user.setCrm(request.getParameter("crm"));
         }else if (checkEmployee != null){
             System.out.println("employee");
+           user.setCrm(request.getParameter("crm"));
             user.setUserRoleId(2);
 
         }else{
@@ -50,7 +51,6 @@ public class RegistrationController extends HttpServlet{
         }
         //user.setUserRoleId(1);
 		user.setBirthday(request.getParameter("birthday"));
-
 
         DatabaseContext dbContext = DatabaseUtils.getDatabaseContext();
         User test = dbContext.getUsers().Find("crm", user.getCrm());
