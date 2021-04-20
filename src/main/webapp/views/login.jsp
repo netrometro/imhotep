@@ -8,9 +8,10 @@
 	<title>Login</title>
 	<link href="/imhotep/resources/css/login.css" rel="stylesheet"/>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body class="sign-in-js">
-	<div class="container">
+	<div class="container-fluid">
 		<div class="content first-content">
 			<div class="first-column">
 				<h2 class="title title-primary">Welcome back</h2>
@@ -18,7 +19,7 @@
 				<p class="description description-primary">please login with your personal info</p>
 				<button id="signin" class="btn btn-primary">sign in</button>
 			</div>
-			<div class="second-column">
+			<div class="second-column" >
 				<h2 class="title title-second">Create account</h2>
 				<form class="form" action="registration" method="POST">
 
@@ -38,7 +39,7 @@
 
 							<div class="form-check" id="client-type">
 								<input class="form-check-input" type="checkbox" name="check-doctor" id="medico"
-									   data-toggle="collapse" href="#crm" aria-expanded="false">
+									   data-toggle="collapse" href="#crm" aria-expanded="false" aria-controls="crm">
 								<label class="form-check-label">
 									Médico
 								</label>
@@ -46,15 +47,13 @@
 
 							<div class="form-check" id="client-type2" >
 								<input class="form-check-input" type="checkbox" name="check-employee" id="funcionario"
-									   data-toggle="collapse" href="#crm" aria-expanded="false">
+									   data-toggle="collapse" href="#crm" aria-expanded="false" aria-controls="crm">
 								<label class="form-check-label" >
 									Funcionário
 								</label>
 							</div>
-
 						</div>
-
-						<div class="panel-collapse collapse in" id="crm"  >
+						<div id="crm" class="collapse" >
 							<label for="crm" class="label-input">
 								<i class="fas fa-id-card"></i>
 								<input name="crm" type="text" class="form-control cep-mask"  placeholder="CRM" maxlength="10" >
@@ -120,6 +119,7 @@
 		</div>
 	</div>
 	<script src="/imhotep/resources/js/app.js"></script>
+
 </body>
 
 </html>

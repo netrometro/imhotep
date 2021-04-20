@@ -7,15 +7,20 @@
 body{
     font-family: 'Open Sans', sans-serif;
 }
-.container{
+.collapse{
+ display: none;
+}
+
+
+.container-fluid{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #dae8e8;
+    background-color: white;
 }
 .content{
-    background-color: white;
+    background-color: #dae8e8;
     border-radius: 15px;
     width: 960px;
     height: 60%;
@@ -106,6 +111,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+
 }
 .form{
     display: flex;
@@ -119,6 +125,7 @@ body{
     background-color: #58af9b;
     margin: 8px;
     color: white;
+    padding: 6px;
 
 }
 .form-control{
@@ -134,7 +141,7 @@ body{
     display: flex;
 }
 .label-input{
-    background-color: #ecf0f1;
+    background-color: #dae8e8;
     display: flex;
     align-items: center;
 
@@ -161,10 +168,12 @@ body{
 .sign-in-js .first-content .second-column{
     z-index: -1;
 }
-
-.sign-in-js .second-content .first-column,
 .sign-in-js .second-content .second-column{
     z-index: 11;
+}
+
+.sign-in-js .second-content .first-column{
+    z-index: 13;
 }
 
 .sign-in-js .content::before{
@@ -174,12 +183,17 @@ body{
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
     animation: slidein 3s;
+    z-index: 12;
 
 }
 .sign-up-js .content::before{
     animation: slideout 3s;
+    z-index: 12;
 }
-.sign-up-js .first-content .first-column,
+
+.sign-up-js .first-content .first-column{
+    z-index: 13;
+}
 .sign-up-js .first-content .second-column{
     z-index: 11;
 }
@@ -187,7 +201,63 @@ body{
 .sign-up-js .second-content .first-column,
 .sign-up-js .second-content .second-column{
     z-index: -1;
+
 }
+/*Deslocamento*/
+.sign-in-js .first-content .second-column{
+    z-index: -1;
+    position: relative;
+    animation: deslocamentoEsq 3s;
+}
+
+.sign-up-js .second-content .second-column{
+    z-index: -1;
+    position: relative;
+    animation: deslocamentoDir 3s;
+}
+
+
+/*animação conteudo*/
+@keyframes deslocamentoEsq {
+    from{
+        left: 0px;
+        opacity: 1;
+        z-index: 12;
+    }
+    25%{
+        left: -80px;
+        opacity: .5;
+    }
+    50%{
+        left: -100px;
+        opacity: .2;
+    }
+    to{
+        left: -110px;
+        opacity: 0;
+        z-index: -1;
+    }
+}
+
+@keyframes deslocamentoDir {
+    from{
+        left: 0px;
+        z-index: 11;
+    }
+    25%{
+        left: 80px;
+
+    }
+    50%{
+        left: 100px;
+
+    }
+    to{
+        left: 110px;
+        z-index: -1;
+    }
+}
+
 
 /*animação*/
 
