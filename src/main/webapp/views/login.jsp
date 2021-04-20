@@ -86,7 +86,7 @@
 				<button id="signup" class="btn btn-primary">sign up</button>
 			</div>
 			<div class="second-column">
-				<span><img alt="logo" src=<%= request.getContextPath()%>/resources/img/logo.png" style="width: 30px"></span>
+				<span><img alt="logo" src="<%= request.getContextPath()%>/resources/img/logo.png" style="width: 30px"></span>
 				<h2 class="title title-second">Sign in</h2>
 				<form class="form" method="post" action="login.jsp">
 
