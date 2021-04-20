@@ -1,7 +1,7 @@
 <%@ page import="br.upe.model.entities.User" %>
 <nav class="navbar navbar-expand" style="background-color: #203B4E;">
     <div class="container-fluid container">
-        <a class="navbar-brand" href="/imhotep/"><img src=""<%= request.getContextPath()%>/resources/img/logo.png" style="width: 1.5em;">Imhotep</a>
+        <a class="navbar-brand" href="/imhotep/"><img src="<%= request.getContextPath()%>/resources/img/logo.png" style="width: 1.5em;">Imhotep</a>
         <button class="navbar-toggler" type="button"
                 data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false"
