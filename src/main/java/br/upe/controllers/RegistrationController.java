@@ -49,7 +49,7 @@ public class RegistrationController extends HttpServlet{
 
             user.setUserRoleId(3);
         }
-        //user.setUserRoleId(1);
+
 		user.setBirthday(request.getParameter("birthday"));
 
         DatabaseContext dbContext = DatabaseUtils.getDatabaseContext();
@@ -58,7 +58,7 @@ public class RegistrationController extends HttpServlet{
             dbContext.getUsers().Create(user);
             response.sendRedirect("login.jsp");
         } else {
-            response.sendRedirect("registration");
+            response.sendRedirect("index.jsp");
         }
     }
 }
