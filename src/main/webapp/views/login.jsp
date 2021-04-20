@@ -6,7 +6,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Login</title>
-	<link href="/imhotep/resources/css/login.css" rel="stylesheet"/>
+	<link href="<%="/imhotep"%>/resources/css/login.css" rel="stylesheet"/>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -38,22 +38,20 @@
 						<div class="form-group form-user">
 
 							<div class="form-check" id="client-type">
-								<input class="form-check-input" type="checkbox" name="check-doctor" id="medico"
-									   data-toggle="collapse" href="#crm" aria-expanded="false" aria-controls="crm">
+								<input class="form-check-input" type="checkbox" id="medico" onclick="ShowHideDiv(this)">
 								<label class="form-check-label">
 									Médico
 								</label>
 							</div>
 
 							<div class="form-check" id="client-type2" >
-								<input class="form-check-input" type="checkbox" name="check-employee" id="funcionario"
-									   data-toggle="collapse" href="#crm" aria-expanded="false" aria-controls="crm">
+								<input class="form-check-input" type="checkbox" id="funcionario" onclick="ShowHideDiv(this)">
 								<label class="form-check-label" >
 									Funcionário
 								</label>
 							</div>
 						</div>
-						<div id="crm" class="collapse" >
+						<div id="crm" style="display: none" >
 							<label for="crm" class="label-input">
 								<i class="fas fa-id-card"></i>
 								<input name="crm" type="text" class="form-control cep-mask"  placeholder="CRM" maxlength="10" >
