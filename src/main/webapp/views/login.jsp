@@ -45,7 +45,7 @@
 							</div>
 
 							<div class="form-check" id="client-type2" >
-								<input class="form-check-input" type="checkbox" id="funcionario" onclick="ShowHideDiv(this)">
+								<input class="form-check-input" type="checkbox" id="funcionario" onclick="ShowHideDiv2(this)">
 								<label class="form-check-label" >
 									Funcionário
 								</label>

@@ -182,12 +182,12 @@ body{
     border-bottom-left-radius: 0px;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-    animation: slidein 3s;
+    animation: slidein 1.5s;
     z-index: 12;
 
 }
 .sign-up-js .content::before{
-    animation: slideout 3s;
+    animation: slideout 1.5s;
     z-index: 12;
 }
 
@@ -207,13 +207,13 @@ body{
 .sign-in-js .first-content .second-column{
     z-index: -1;
     position: relative;
-    animation: deslocamentoEsq 3s;
+    animation: deslocamentoEsq 1.5s;
 }
 
 .sign-up-js .second-content .second-column{
     z-index: -1;
     position: relative;
-    animation: deslocamentoDir 3s;
+    animation: deslocamentoDir 1.5s;
 }
 
 
