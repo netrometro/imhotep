@@ -47,7 +47,7 @@ public class RegistrationController extends HttpServlet {
 
         } else {
             user.setUserRoleId(3);
-            user.setCrm(user.getId()+"");
+            user.setCrm(user.getId()+"" );
         }
 
         user.setBirthday(request.getParameter("birthday"));
