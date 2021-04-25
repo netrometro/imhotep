@@ -2,8 +2,8 @@ var btnSignin = document.querySelector("#signin");
 var btnSignup = document.querySelector("#signup");
 var body = document.querySelector("body");
 
-var checkbocMedico =  document.getElementById("medico");
-var checkbocFuncionario =  document.getElementById("funcionario");
+var checkbocMedico =  document.getElementById("check-doctor");
+var checkbocFuncionario =  document.getElementById("check-employee");
 
 btnSignin.addEventListener("click", function (){
    body.className = "sign-in-js";

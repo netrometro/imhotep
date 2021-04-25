@@ -38,14 +38,14 @@
 						<div class="form-group form-user">
 
 							<div class="form-check" id="client-type">
-								<input class="form-check-input" type="checkbox" id="medico" onclick="ShowHideDiv(this)">
+								<input class="form-check-input" type="checkbox" name="check-doctor" id="check-doctor" onclick="ShowHideDiv(this)">
 								<label class="form-check-label">
 									Médico
 								</label>
 							</div>
 
 							<div class="form-check" id="client-type2" >
-								<input class="form-check-input" type="checkbox" id="funcionario" onclick="ShowHideDiv2(this)">
+								<input class="form-check-input" type="checkbox" name="check-employee" id="check-employee" onclick="ShowHideDiv2(this)">
 								<label class="form-check-label" >
 									Funcionário
 								</label>
@@ -59,8 +59,8 @@
 						</div>
 
 					<label for="birthday" class="label-input">
-						<i class="far fa-calendar-alt"></i>
-						<input name="birthday" type="text" class="form-control" id="birthday" placeholder="Data de nascimento">
+						<i class="far fa-calendar-alt" for="birthday"></i>
+						<input name="birthday" type="date" class="form-control" id="birthday" placeholder="Data de nascimento">
 					</label>
 
 					<label for="inputEmail1" class="label-input">
