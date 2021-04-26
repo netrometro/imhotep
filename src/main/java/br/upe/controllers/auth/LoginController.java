@@ -19,6 +19,7 @@ import java.util.ArrayList;
 @WebServlet(name = "/login", urlPatterns = {"/login.jsp"})
 public class LoginController extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    public static final String USER_LOGGED_ATTRIBUTE_NAME = "userlogged";
 
     public LoginController() {
         super();
@@ -55,7 +56,7 @@ public class LoginController extends HttpServlet {
                 System.out.println("Usuario logado " + user);
                 if (user != null) {
                     if (user.getPassword().equalsIgnoreCase(senha)) {
-                        request.getSession().setAttribute("userlogged", user);
+                        request.getSession().setAttribute(USER_LOGGED_ATTRIBUTE_NAME, user);
 
                         //System.out.println("O erro foi: "+user.toString());
                         DatabaseContext dbContext2 = DatabaseUtils.getDatabaseContext();
