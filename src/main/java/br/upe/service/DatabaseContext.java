@@ -20,6 +20,7 @@ public class DatabaseContext {
         conn = databaseConnection;
         userRoles = new DbSet<UserRole>(databaseConnection, UserRole.class);
         users = new DbSet<User>(databaseConnection, User.class);
+        consultationPeriods = new DbSet<ConsultationPeriods>(databaseConnection, ConsultationPeriods.class);
     }
 
     public IDbSet<ConsultationPeriods> getConsultationPeriods() {

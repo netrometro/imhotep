@@ -5,13 +5,13 @@ import br.upe.service.core.Table;
 
 @Table(name="consultation_periods")
 public class ConsultationPeriods {
-    @Column(name="id")
+    @Column(name="id", foreignKey = true)
     private int id;
     @Column(name="sunday")
     private String sunday;
     @Column(name="monday")
     private String monday;
-    @Column(name="tuesdat")
+    @Column(name="tuesday")
     private String tuesday;
     @Column(name="wednesday")
     private String wednesday;
@@ -21,7 +21,11 @@ public class ConsultationPeriods {
     private String friday;
     @Column(name="saturday")
     private String saturday;
-    
+
+    public ConsultationPeriods() {
+        sunday = monday = tuesday = wednesday = thursday = friday = saturday = "";
+    }
+
     public int getId() {
         return this.id;
     }

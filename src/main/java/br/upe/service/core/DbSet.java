@@ -155,24 +155,14 @@ public class DbSet<T> implements IDbSet<T> {
         StringBuilder values = new StringBuilder();
         Field[] types = type.getDeclaredFields();
 
-        // to ignore statistical attributes
-        int numberOfNotStaticAttributes = 0;
-
-        for (int i = 0; i < types.length; i++){
-            if (!Modifier.isStatic(types[i].getModifiers()))
-                numberOfNotStaticAttributes++;
-        }
-
         for (int i = 0; i < types.length; i++) {
             if (Modifier.isStatic(types[i].getModifiers()))
                 continue;
 
             String columnName = types[i].getAnnotation(Column.class).name();
-            if (columnName.equals("id")) {
+            if (columnName.equals("id") && !types[i].getAnnotation(Column.class).foreignKey()) {
                 continue;
             }
-
-            numberOfNotStaticAttributes--;
 
             columns.append(columnName);
             String getMethodName = "get" + capitalize(types[i].getName());
@@ -194,7 +184,7 @@ public class DbSet<T> implements IDbSet<T> {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-            if (i < (types.length - 1) && numberOfNotStaticAttributes > 1) {
+            if (i < (types.length - 1)) {
                 columns.append(",");
                 values.append(",");
             }
