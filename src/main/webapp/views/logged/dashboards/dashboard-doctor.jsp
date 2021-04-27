@@ -26,10 +26,7 @@
                     editable: true,
                     eventLimit: true, // allow "more" link when too many events
                     events: [
-                        {
-                            title: ${sessionScope.userlogged.name},
-                            start: '2021-04-26',
-                        },
+
                         {
                             title: 'All Day Event',
                             start: '2018-03-01',

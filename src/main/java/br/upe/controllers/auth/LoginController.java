@@ -3,14 +3,13 @@ package br.upe.controllers.auth;
 import br.upe.model.entities.User;
 import br.upe.model.entities.UserRole;
 import br.upe.service.DatabaseContext;
-import br.upe.service.DatabaseUtils;
+import br.upe.util.DatabaseUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.Console;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.sql.SQLException;

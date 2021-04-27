@@ -1,4 +1,6 @@
-package br.upe.service;
+package br.upe.util;
+
+import br.upe.service.DatabaseContext;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -34,4 +36,5 @@ public class DatabaseUtils {
     public static DatabaseContext getDatabaseContext(){
         return getDatabaseContext(System.getenv("DATABASE_URL"));
     }
+
 }

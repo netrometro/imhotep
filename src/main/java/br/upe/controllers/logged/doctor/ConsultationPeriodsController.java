@@ -12,7 +12,7 @@ import br.upe.controllers.auth.LoginController;
 import br.upe.model.entities.ConsultationPeriods;
 import br.upe.model.entities.User;
 import br.upe.service.DatabaseContext;
-import br.upe.service.DatabaseUtils;
+import br.upe.util.DatabaseUtils;
 
 @WebServlet(name = "/consultation-periods", urlPatterns = "/logged/doctor/consultation-periods.jsp")
 public class ConsultationPeriodsController extends HttpServlet {

@@ -3,7 +3,7 @@ package br.upe.controllers.auth.filter.specific;
 import br.upe.model.entities.User;
 import br.upe.model.entities.UserRole;
 import br.upe.service.DatabaseContext;
-import br.upe.service.DatabaseUtils;
+import br.upe.util.DatabaseUtils;
 
 import java.io.IOException;
 import javax.servlet.Filter;
