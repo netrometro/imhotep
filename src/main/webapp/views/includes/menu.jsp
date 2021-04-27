@@ -28,6 +28,9 @@
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <% if (u != null) { %>
                         <li><a class="dropdown-item" href="#">Perfil</a></li>
+                        <% if (!u.getCrm().equals("") && u.getCrm() != null) { %>
+                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/logged/doctor/consultation-periods.jsp">Horário disponível para Consulta</a></li>
+                        <% } %>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/logout.jsp">Sair</a></li>
                     <% } else {%>
