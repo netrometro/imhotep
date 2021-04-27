@@ -3,24 +3,27 @@ package br.upe.model.entities;
 import br.upe.service.core.Column;
 import br.upe.service.core.Table;
 
-@Table(name="consultation_periods")
+@Table(name = "consultation_periods")
 public class ConsultationPeriods {
-    @Column(name="id", foreignKey = true)
+    @Column(name = "id")
     private int id;
-    @Column(name="sunday")
+    @Column(name = "sunday")
     private String sunday;
-    @Column(name="monday")
+    @Column(name = "monday")
     private String monday;
-    @Column(name="tuesday")
+    @Column(name = "tuesday")
     private String tuesday;
-    @Column(name="wednesday")
+    @Column(name = "wednesday")
     private String wednesday;
-    @Column(name="thursday")
+    @Column(name = "thursday")
     private String thursday;
-    @Column(name="friday")
+    @Column(name = "friday")
     private String friday;
-    @Column(name="saturday")
+    @Column(name = "saturday")
     private String saturday;
+
+    @Column(name = "users_crm", foreignKey = true)
+    private String userCrm;
 
     public ConsultationPeriods() {
         sunday = monday = tuesday = wednesday = thursday = friday = saturday = "";
@@ -88,5 +91,13 @@ public class ConsultationPeriods {
 
     public void setSaturday(String saturday) {
         this.saturday = saturday;
+    }
+
+    public String getUserCrm() {
+        return userCrm;
+    }
+
+    public void setUserCrm(String userCrm) {
+        this.userCrm = userCrm;
     }
 }

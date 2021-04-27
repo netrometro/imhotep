@@ -1,5 +1,7 @@
 package br.upe.controllers.logged.doctor;
 
+import com.google.gson.Gson;
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;

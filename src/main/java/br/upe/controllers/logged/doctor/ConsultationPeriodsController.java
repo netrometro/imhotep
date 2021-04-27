@@ -24,7 +24,7 @@ public class ConsultationPeriodsController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ConsultationPeriods consultationPeriods = new ConsultationPeriods();
         User sessionUser = (User) request.getSession().getAttribute(LoginController.USER_LOGGED_ATTRIBUTE_NAME);
-        consultationPeriods.setId(sessionUser.getId());
+        consultationPeriods.setUserCrm(sessionUser.getCrm());
         consultationPeriods.setFriday(request.getParameter("friday"));
         consultationPeriods.setMonday(request.getParameter("monday"));
         consultationPeriods.setSaturday(request.getParameter("saturday"));

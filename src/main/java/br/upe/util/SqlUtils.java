@@ -26,10 +26,11 @@ public class SqlUtils {
                 "thursday varchar, " +
                 "friday varchar, " +
                 "saturday varchar, " +
-                "CONSTRAINT fk_user FOREIGN KEY(id) REFERENCES users(id));";
+                "users_crm varchar); ";
 
 
-    public static final String SQL_STANDARD_USER_TYPES = "INSERT INTO user_roles(name) values('" + UserRole.DOCTOR + "');" +
+    public static final String SQL_STANDARD_USER_TYPES = "" +
+                "INSERT INTO user_roles(name) values('" + UserRole.DOCTOR + "');" +
                 "INSERT INTO user_roles(name) values('" + UserRole.EMPLOYEER + "');" +
                 "INSERT INTO user_roles(name) values('" + UserRole.PATIENT + "');";
 

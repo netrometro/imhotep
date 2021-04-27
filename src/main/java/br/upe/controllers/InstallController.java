@@ -55,27 +55,40 @@ public class InstallController extends HttpServlet {
     }
 
     private void createFakeTimes(DatabaseContext dbContext) {
-        ConsultationPeriods nextWeek = generateWeekOfTimes(new int[]{3, 4, 1});
-        ConsultationPeriods currentWeek = generateWeekOfTimes(new int[]{3, 4, 1});
-        ConsultationPeriods lastWeek = generateWeekOfTimes(new int[]{5, 7, 2});
+        ConsultationPeriods nextWeek = generateWeekOfTimes(new int[]{3, 4, 1}, 6);
+        ConsultationPeriods currentWeek = generateWeekOfTimes(new int[]{3, 4, 1}, 1);
+        ConsultationPeriods lastWeek = generateWeekOfTimes(new int[]{5, 7, 2}, -6);
 
         //dbContext.getConsultationPeriods().Create(nextWeek);
         dbContext.getConsultationPeriods().Create(currentWeek);
         //.getConsultationPeriods().Create(lastWeek);
+
+
     }
 
-    private ConsultationPeriods generateWeekOfTimes(int[] hours) {
+    private ConsultationPeriods generateWeekOfTimes(int[] hours, int days) {
         ConsultationPeriods week = new ConsultationPeriods();
-        week.setId(1);
-        week.setFriday(
-                LocalDateTime.now().plusHours(hours[0]).plusMinutes(0).format(DateTimeFormatter.ofPattern("HH:mm")) + ";" +
-                        LocalDateTime.now().plusHours(hours[0]).plusMinutes(30).format(DateTimeFormatter.ofPattern("HH:mm")));
-        week.setThursday(
-                LocalDateTime.now().plusHours(hours[1]).plusMinutes(0).format(DateTimeFormatter.ofPattern("HH:mm")) + ";" +
-                        LocalDateTime.now().plusHours(hours[1]).plusMinutes(30).format(DateTimeFormatter.ofPattern("HH:mm")));
-        week.setTuesday(
-                LocalDateTime.now().plusHours(hours[2]).minusHours(0).format(DateTimeFormatter.ofPattern("HH:mm")) + ";" +
-                        LocalDateTime.now().plusHours(hours[2]).minusHours(30).format(DateTimeFormatter.ofPattern("HH:mm")));
+        week.setUserCrm("100200300");
+        //week.setId(1);
+        week.setFriday(generateTimesAdd(hours[0], days));
+        week.setThursday(generateTimesAdd(hours[1], days));
+        week.setTuesday(generateTimesAdd(hours[2], days));
         return week;
+    }
+
+    private String generateTimesAdd(int hrs, int days){
+        String strLocalDate2   = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String strLocalTime2   = ""+
+                LocalDateTime.now().plusDays(days).plusHours(hrs).minusHours(0).format(DateTimeFormatter.ofPattern("HH:mm")) + "-" +
+                LocalDateTime.now().plusDays(days).plusHours(hrs).minusHours(30).format(DateTimeFormatter.ofPattern("HH:mm"));
+        return strLocalDate2+"T" + strLocalTime2;
+    }
+
+    private String generateTimesMinus(int hrs, int days){
+        String strLocalDate2   = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String strLocalTime2   = ""+
+                LocalDateTime.now().minusDays(days).plusHours(hrs).minusHours(0).format(DateTimeFormatter.ofPattern("HH:mm")) + "-" +
+                LocalDateTime.now().minusDays(days).plusHours(hrs).minusHours(30).format(DateTimeFormatter.ofPattern("HH:mm"));
+        return strLocalDate2+"T" + strLocalTime2;
     }
 }
