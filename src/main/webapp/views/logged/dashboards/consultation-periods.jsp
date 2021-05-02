@@ -13,32 +13,12 @@
             <div class="col-6">
                 <form action="consultation-periods.jsp" method="POST">
                     <div class="form-group">
-                        <label for="form-input-sunday">Domingo</label>
-                        <input type="text" class="form-control" id="form-input-sunday" placeholder="08:00-13:00" name="sunday"/>
+                        <label for="form-input-date">Data</label>
+                        <input type="date" class="form-control" id="form-input-date" placeholder="08:00-13:00" name="date"/>
                     </div>
                     <div class="form-group">
-                        <label for="form-input-monday">Segunda</label>
-                        <input type="text" class="form-control" id="form-input-monday" placeholder="08:00-12:00;13:00-18:00" name="monday"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="form-input-tuesday">Terça-Feira</label>
-                        <input type="text" class="form-control" id="form-input-tuesday" placeholder="08:00-12:00;13:00-18:00" name="tuesday"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="form-input-wednesday">Quarta-Feira</label>
-                        <input type="text" class="form-control" id="form-input-wednesday" placeholder="08:00-12:00;13:00-18:00" name="wednesday"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="form-input-thursday">Quinta-Feira</label>
-                        <input type="text" class="form-control" id="form-input-thursday" placeholder="08:00-12:00;13:00-18:00" name="thursday"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="form-input-friday">Sexta-Feira</label>
-                        <input type="text" class="form-control" id="form-input-friday" placeholder="08:00-12:00;13:00-18:00" name="friday"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="form-input-saturday">Sábado</label>
-                        <input type="text" class="form-control" id="form-input-saturday" placeholder="08:00-12:00;13:00-18:00" name="saturday"/>
+                        <label for="form-input-period">Periodo</label>
+                        <input type="text" class="form-control" id="form-input-period" placeholder="08:00-13:00" name="period"/>
                     </div>
                     <button type="submit" class="btn btn-primary">Salvar</button>
                 </form>
