@@ -15,21 +15,21 @@ public class DatabaseContext {
     private Connection conn;
     private IDbSet<UserRole> userRoles;
     private IDbSet<User> users;
-    private IDbSet<ConsultationEntity> consultationPeriods;
+    private IDbSet<ConsultationEntity> consultations;
 
     public DatabaseContext(Connection databaseConnection){        
         conn = databaseConnection;
         userRoles = new DbSet<UserRole>(databaseConnection, UserRole.class);
         users = new DbSet<User>(databaseConnection, User.class);
-        consultationPeriods = new DbSet<ConsultationEntity>(databaseConnection, ConsultationEntity.class);
+        consultations = new DbSet<ConsultationEntity>(databaseConnection, ConsultationEntity.class);
     }
 
     public IDbSet<ConsultationEntity> getConsultations() {
-        return consultationPeriods;
+        return consultations;
     }
 
     public void setConsultationPeriods(IDbSet<ConsultationEntity> consultationPeriods) {
-        this.consultationPeriods = consultationPeriods;
+        this.consultations = consultationPeriods;
     }
 
     public IDbSet<UserRole> getUserRoles() {
