@@ -18,9 +18,6 @@ import java.time.format.DateTimeFormatter;
 @WebServlet("/install")
 public class InstallController extends HttpServlet {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
     public InstallController() {
