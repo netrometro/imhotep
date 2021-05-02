@@ -1,7 +1,7 @@
 
 package br.upe.controllers.logged.doctor;
 
-        import br.upe.model.entities.ConsultationPeriods;
+        import br.upe.model.entities.ConsultationEntity;
         import br.upe.model.entities.User;
         import br.upe.service.DatabaseContext;
         import br.upe.util.DatabaseUtils;
@@ -38,19 +38,19 @@ public class TimesController extends HttpServlet {
         User u = (User) session.getAttribute("userlogged");
 
         DatabaseContext dbContext = DatabaseUtils.getDatabaseContext();
-        List<ConsultationPeriods> consuls = dbContext.getConsultationPeriods().ToArray();
+        List<ConsultationEntity> consuls = dbContext.getConsultations().ToArray();
 
         ArrayList<String> times = new ArrayList<>();
 
         for(int i=0; i<consuls.size(); i++){
             if(!u.getCrm().equals(consuls.get(i).getUserCrm())) continue;
-            if(!consuls.get(i).getMonday().equals("")) times.add(consuls.get(i).getMonday());
-            if(!consuls.get(i).getTuesday().equals("")) times.add(consuls.get(i).getTuesday());
-            if(!consuls.get(i).getWednesday().equals("")) times.add(consuls.get(i).getWednesday());
-            if(!consuls.get(i).getThursday().equals("")) times.add(consuls.get(i).getThursday());
-            if(!consuls.get(i).getFriday().equals("")) times.add(consuls.get(i).getFriday());
-            if(!consuls.get(i).getSaturday().equals("")) times.add(consuls.get(i).getSaturday());
-            if(!consuls.get(i).getSunday().equals("")) times.add(consuls.get(i).getSunday());
+            //if(!consuls.get(i).getMonday().equals("")) times.add(consuls.get(i).getMonday());
+            //if(!consuls.get(i).getTuesday().equals("")) times.add(consuls.get(i).getTuesday());
+            //if(!consuls.get(i).getWednesday().equals("")) times.add(consuls.get(i).getWednesday());
+            //if(!consuls.get(i).getThursday().equals("")) times.add(consuls.get(i).getThursday());
+            //if(!consuls.get(i).getFriday().equals("")) times.add(consuls.get(i).getFriday());
+            //if(!consuls.get(i).getSaturday().equals("")) times.add(consuls.get(i).getSaturday());
+            //if(!consuls.get(i).getSunday().equals("")) times.add(consuls.get(i).getSunday());
         }
 
         String json = this.gson.toJson(times);

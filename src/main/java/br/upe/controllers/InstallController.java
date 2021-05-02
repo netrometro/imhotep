@@ -1,6 +1,6 @@
 package br.upe.controllers;
 
-import br.upe.model.entities.ConsultationPeriods;
+import br.upe.model.entities.ConsultationEntity;
 import br.upe.model.entities.User;
 import br.upe.service.DatabaseContext;
 import br.upe.util.DatabaseUtils;
@@ -55,24 +55,24 @@ public class InstallController extends HttpServlet {
     }
 
     private void createFakeTimes(DatabaseContext dbContext) {
-        ConsultationPeriods nextWeek = generateWeekOfTimes(new int[]{3, 4, 1}, 6);
-        ConsultationPeriods currentWeek = generateWeekOfTimes(new int[]{3, 4, 1}, 1);
-        ConsultationPeriods lastWeek = generateWeekOfTimes(new int[]{5, 7, 2}, -6);
+        ConsultationEntity nextWeek = generateWeekOfTimes(new int[]{3, 4, 1}, 6);
+        ConsultationEntity currentWeek = generateWeekOfTimes(new int[]{3, 4, 1}, 1);
+        ConsultationEntity lastWeek = generateWeekOfTimes(new int[]{5, 7, 2}, -6);
 
         //dbContext.getConsultationPeriods().Create(nextWeek);
-        dbContext.getConsultationPeriods().Create(currentWeek);
+        dbContext.getConsultations().Create(currentWeek);
         //.getConsultationPeriods().Create(lastWeek);
 
 
     }
 
-    private ConsultationPeriods generateWeekOfTimes(int[] hours, int days) {
-        ConsultationPeriods week = new ConsultationPeriods();
+    private ConsultationEntity generateWeekOfTimes(int[] hours, int days) {
+        ConsultationEntity week = new ConsultationEntity();
         week.setUserCrm("100200300");
         //week.setId(1);
-        week.setFriday(generateTimesAdd(hours[0], days));
-        week.setThursday(generateTimesAdd(hours[1], days));
-        week.setTuesday(generateTimesAdd(hours[2], days));
+        //week.setFriday(generateTimesAdd(hours[0], days));
+        //week.setThursday(generateTimesAdd(hours[1], days));
+        //week.setTuesday(generateTimesAdd(hours[2], days));
         return week;
     }
 

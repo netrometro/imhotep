@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.upe.controllers.auth.LoginController;
-import br.upe.model.entities.ConsultationPeriods;
+import br.upe.model.entities.ConsultationEntity;
 import br.upe.model.entities.User;
 import br.upe.service.DatabaseContext;
 import br.upe.util.DatabaseUtils;
@@ -22,22 +22,15 @@ public class ConsultationPeriodsController extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ConsultationPeriods consultationPeriods = new ConsultationPeriods();
+        ConsultationEntity consultationPeriods = new ConsultationEntity();
         User sessionUser = (User) request.getSession().getAttribute(LoginController.USER_LOGGED_ATTRIBUTE_NAME);
         consultationPeriods.setUserCrm(sessionUser.getCrm());
-        consultationPeriods.setFriday(request.getParameter("friday"));
-        consultationPeriods.setMonday(request.getParameter("monday"));
-        consultationPeriods.setSaturday(request.getParameter("saturday"));
-        consultationPeriods.setThursday(request.getParameter("thursday"));
-        consultationPeriods.setTuesday(request.getParameter("tuesday"));
-        consultationPeriods.setWednesday(request.getParameter("wednesday"));
-        consultationPeriods.setSunday(request.getParameter("sunday"));
 
         DatabaseContext dbContext = DatabaseUtils.getDatabaseContext();
-        if (((ConsultationPeriods) dbContext.getConsultationPeriods().Find(consultationPeriods.getId())) != null) {
-            dbContext.getConsultationPeriods().update(consultationPeriods);
+        if (((ConsultationEntity) dbContext.getConsultations().Find(consultationPeriods.getId())) != null) {
+            dbContext.getConsultations().update(consultationPeriods);
         }else {
-            dbContext.getConsultationPeriods().Create(consultationPeriods);
+            dbContext.getConsultations().Create(consultationPeriods);
         }
         request.getRequestDispatcher("/views/logged/dashboards/dashboard-doctor.jsp").forward(request, response);
     }

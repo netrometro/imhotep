@@ -1,6 +1,6 @@
 package br.upe.controllers;
 
-import br.upe.model.entities.ConsultationPeriods;
+import br.upe.model.entities.ConsultationEntity;
 import br.upe.model.entities.User;
 import br.upe.service.DatabaseContext;
 import br.upe.util.DatabaseUtils;
@@ -64,9 +64,9 @@ public class RegistrationController extends HttpServlet {
         if (soughtUser == null) {
             User createdUser = dbContext.getUsers().Create(user);
             if(!createdUser.getCrm().equals("") || createdUser.getCrm() != null) {
-                ConsultationPeriods consultationPeriods = new ConsultationPeriods();
+                ConsultationEntity consultationPeriods = new ConsultationEntity();
                 consultationPeriods.setUserCrm(createdUser.getCrm());
-                dbContext.getConsultationPeriods().Create(consultationPeriods);
+                dbContext.getConsultations().Create(consultationPeriods);
             }
             response.sendRedirect("login.jsp");
         } else {

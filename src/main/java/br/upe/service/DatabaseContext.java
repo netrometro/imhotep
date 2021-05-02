@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import br.upe.model.entities.ConsultationPeriods;
+import br.upe.model.entities.ConsultationEntity;
 import br.upe.model.entities.User;
 import br.upe.model.entities.UserRole;
 import br.upe.service.core.DbSet;
@@ -15,20 +15,20 @@ public class DatabaseContext {
     private Connection conn;
     private IDbSet<UserRole> userRoles;
     private IDbSet<User> users;
-    private IDbSet<ConsultationPeriods> consultationPeriods;
+    private IDbSet<ConsultationEntity> consultationPeriods;
 
     public DatabaseContext(Connection databaseConnection){        
         conn = databaseConnection;
         userRoles = new DbSet<UserRole>(databaseConnection, UserRole.class);
         users = new DbSet<User>(databaseConnection, User.class);
-        consultationPeriods = new DbSet<ConsultationPeriods>(databaseConnection, ConsultationPeriods.class);
+        consultationPeriods = new DbSet<ConsultationEntity>(databaseConnection, ConsultationEntity.class);
     }
 
-    public IDbSet<ConsultationPeriods> getConsultationPeriods() {
+    public IDbSet<ConsultationEntity> getConsultations() {
         return consultationPeriods;
     }
 
-    public void setConsultationPeriods(IDbSet<ConsultationPeriods> consultationPeriods) {
+    public void setConsultationPeriods(IDbSet<ConsultationEntity> consultationPeriods) {
         this.consultationPeriods = consultationPeriods;
     }
 
