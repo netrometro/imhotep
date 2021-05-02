@@ -64,9 +64,7 @@ public class RegistrationController extends HttpServlet {
         if (soughtUser == null) {
             User createdUser = dbContext.getUsers().Create(user);
             if(!createdUser.getCrm().equals("") || createdUser.getCrm() != null) {
-                ConsultationEntity consultationPeriods = new ConsultationEntity();
-                consultationPeriods.setUserCrm(createdUser.getCrm());
-                dbContext.getConsultations().Create(consultationPeriods);
+                dbContext.getUsers().Create(user);
             }
             response.sendRedirect("login.jsp");
         } else {

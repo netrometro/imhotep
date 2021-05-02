@@ -19,15 +19,9 @@ public class SqlUtils {
 
     public static final String SQL_TABLE_OF_CONSULTATION_PERIODS = "CREATE TABLE consultation_periods (" +
                 "id serial PRIMARY KEY, " +
-                "sunday varchar, " +
-                "monday varchar, " +
-                "tuesday varchar, " +
-                "wednesday varchar, " +
-                "thursday varchar, " +
-                "friday varchar, " +
-                "saturday varchar, " +
-                "users_crm varchar); ";
-
+                "period varchar, " +
+                "date varchar, " +
+                "users_crm integer);";
 
     public static final String SQL_STANDARD_USER_TYPES = "" +
                 "INSERT INTO user_roles(name) values('" + UserRole.DOCTOR + "');" +
