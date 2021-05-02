@@ -1,6 +1,7 @@
 package br.upe.controllers.logged.doctor;
 
 import java.io.IOException;
+import java.sql.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,6 +26,8 @@ public class ConsultationPeriodsController extends HttpServlet {
         ConsultationEntity consultationPeriods = new ConsultationEntity();
         User sessionUser = (User) request.getSession().getAttribute(LoginController.USER_LOGGED_ATTRIBUTE_NAME);
         consultationPeriods.setUserCrm(sessionUser.getCrm());
+        consultationPeriods.setDate(Date.valueOf(request.getParameter("date")));
+        consultationPeriods.setPeriod(request.getParameter("period"));
 
         DatabaseContext dbContext = DatabaseUtils.getDatabaseContext();
         if (((ConsultationEntity) dbContext.getConsultations().Find(consultationPeriods.getId())) != null) {
