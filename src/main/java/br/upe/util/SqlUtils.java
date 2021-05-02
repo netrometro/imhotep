@@ -19,13 +19,8 @@ public class SqlUtils {
 
     public static final String SQL_TABLE_OF_CONSULTATION_PERIODS = "CREATE TABLE consultation_periods (" +
                 "id serial PRIMARY KEY, " +
-                "sunday varchar, " +
-                "monday varchar, " +
-                "tuesday varchar, " +
-                "wednesday varchar, " +
-                "thursday varchar, " +
-                "friday varchar, " +
-                "saturday varchar, " +
+                "period varchar, " +
+                "date date, " +
                 "users_crm varchar); ";
 
 

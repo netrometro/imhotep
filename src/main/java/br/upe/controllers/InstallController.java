@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -69,6 +70,8 @@ public class InstallController extends HttpServlet {
     private ConsultationEntity generateWeekOfTimes(int[] hours, int days) {
         ConsultationEntity week = new ConsultationEntity();
         week.setUserCrm("100200300");
+        week.setDate(Date.valueOf("2021-5-2"));
+        week.setPeriod("13:00-14:00");
         //week.setId(1);
         //week.setFriday(generateTimesAdd(hours[0], days));
         //week.setThursday(generateTimesAdd(hours[1], days));
