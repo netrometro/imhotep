@@ -5,6 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -249,9 +250,14 @@ public class DbSet<T> implements IDbSet<T> {
             String fieldName = field.getName();
             String setMethodName = "set" + capitalize(fieldName);
             Method method = object.getClass().getMethod(setMethodName, field.getType());
-            if (field.getType() == int.class) {
+            if (field.getType() == String.class) {
+                method.invoke(object, queryResult.getString(columnName));
+            } else if (field.getType() == int.class) {
                 method.invoke(object, Integer.parseInt(queryResult.getString(columnName)));
-            } else {
+            } else if (field.getType() == Date.class) {
+                method.invoke(object, Date.valueOf(queryResult.getString(columnName)));
+            }
+            else {
                 method.invoke(object, queryResult.getString(columnName));
             }
         }
