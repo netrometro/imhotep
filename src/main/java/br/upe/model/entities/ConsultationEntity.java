@@ -19,6 +19,14 @@ public class ConsultationEntity {
     public ConsultationEntity() {
         period = "";
     }
+
+    public ConsultationEntity(int id, String period, Date date, String userCrm) {
+        this.id = id;
+        this.period = period;
+        this.date = date;
+        this.userCrm = userCrm;
+    }
+
     public int getId() {
         return this.id;
     }
@@ -42,10 +50,12 @@ public class ConsultationEntity {
     public void setUserCrm(String userCrm) {
         this.userCrm = userCrm;
     }
+
     public Date getDate() {
         return this.date;
     }
     public void setDate(Date date) {
         this.date = date;
     }
+
 }

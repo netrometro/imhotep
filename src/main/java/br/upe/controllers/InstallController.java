@@ -68,8 +68,8 @@ public class InstallController extends HttpServlet {
 
     private ConsultationEntity generateWeekOfTimes(int[] hours, int days) {
         ConsultationEntity week = new ConsultationEntity();
-        week.setUserCrm("100200300");
-        week.setPeriod(generateTimesAdd(hours[1], days) + generateTimesAdd(hours[2], days) + generateTimesAdd(hours[0], days));
+        week.setUserCrm("300200100");
+        week.setPeriod(generateTimesAdd(hours[1], days));
         return week;
     }
 

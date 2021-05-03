@@ -23,20 +23,16 @@
                 let arr = $.map(json, function (el) {
                     return el;
                 })
-                console.log(arr);
 
                 for (value of arr) {
                     times.push({
-
-                        title: 'Horario livre: ' + value,
-                        start: value,
+                        title: value.period,
+                        start: value.dateString,
                         data: value,
                     });
                 }
 
-                console.log(times);
                 $(document).ready(function () {
-
                     $('#calendar').fullCalendar({
                         header: {
                             center: 'month,agendaWeek,agendaDay,listWeek, addEventButton',
@@ -49,50 +45,13 @@
                         eventLimit: true, // allow "more" link when too many events
 
                         events: times,
-                        customButtons: {
-                            addEventButton: {
-                                text: 'Add new event',
-                                click: function () {
-                                    var dateStr = prompt('Enter date in YYYY-MM-DD format');
-                                    var date = moment(dateStr);
-
-                                    if (date.isValid()) {
-                                        $('#calendar').fullCalendar('renderEvent', {
-                                            title: 'Dynamic event',
-                                            start: date,
-                                            allDay: true
-                                        });
-                                    } else {
-                                        alert('Invalid Date');
-                                    }
-
-                                }
-                            }
-                        },
-                        dayClick: function (date, jsEvent, view) {
-                            var date = moment(date);
-
-                            if (date.isValid()) {
-                                $('#calendar').fullCalendar('renderEvent', {
-                                    title: 'Dynamic event from date click',
-                                    start: date,
-                                    allDay: true
-                                });
-                            } else {
-                                alert('Invalid');
-                            }
-                        },
                     });
-
                 });
-
             },
             error: function () {
                 msg.text("Erro ao fazer requisição");
             }
         });
-        console.log(times.responseJSON)
-
 
     </script>
 

@@ -9,6 +9,7 @@ package br.upe.controllers.logged.doctor;
 
         import java.io.IOException;
         import java.io.PrintWriter;
+        import java.io.Serializable;
         import java.util.ArrayList;
         import java.util.List;
 
@@ -40,19 +41,20 @@ public class TimesController extends HttpServlet {
         DatabaseContext dbContext = DatabaseUtils.getDatabaseContext();
         List<ConsultationEntity> consuls = dbContext.getConsultations().ToArray();
 
-        ArrayList<String> times = new ArrayList<>();
+        ArrayList<Consultation> times = new ArrayList<Consultation>();
 
         for(int i=0; i<consuls.size(); i++){
             if(!u.getCrm().equals(consuls.get(i).getUserCrm())) continue;
-            if(!consuls.get(i).getDate().equals("")) times.add(consuls.get(i).getDate().toString());
-            if(!consuls.get(i).getPeriod().equals("")) times.add(consuls.get(i).getPeriod());
+            times.add(new Consultation(consuls.get(i), consuls.get(i).getDate().toString()));
         }
 
         String json = this.gson.toJson(times);
+        System.out.println(json);
 
         PrintWriter out = response.getWriter();
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
+
         out.print(json);
         out.flush();
     }
@@ -61,5 +63,15 @@ public class TimesController extends HttpServlet {
             throws ServletException, IOException {
 
         doGet(request, response);
+    }
+
+    private class Consultation extends ConsultationEntity implements Serializable {
+
+        private String dateString = "";
+
+        public Consultation(ConsultationEntity c, String datestring) {
+            super(c.getId(), c.getPeriod(), c.getDate(), c.getUserCrm());
+            this.dateString = datestring;
+        }
     }
 }
