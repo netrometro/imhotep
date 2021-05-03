@@ -44,13 +44,8 @@ public class TimesController extends HttpServlet {
 
         for(int i=0; i<consuls.size(); i++){
             if(!u.getCrm().equals(consuls.get(i).getUserCrm())) continue;
-            //if(!consuls.get(i).getMonday().equals("")) times.add(consuls.get(i).getMonday());
-            //if(!consuls.get(i).getTuesday().equals("")) times.add(consuls.get(i).getTuesday());
-            //if(!consuls.get(i).getWednesday().equals("")) times.add(consuls.get(i).getWednesday());
-            //if(!consuls.get(i).getThursday().equals("")) times.add(consuls.get(i).getThursday());
-            //if(!consuls.get(i).getFriday().equals("")) times.add(consuls.get(i).getFriday());
-            //if(!consuls.get(i).getSaturday().equals("")) times.add(consuls.get(i).getSaturday());
-            //if(!consuls.get(i).getSunday().equals("")) times.add(consuls.get(i).getSunday());
+            if(!consuls.get(i).getDate().equals("")) times.add(consuls.get(i).getDate().toString());
+            if(!consuls.get(i).getPeriod().equals("")) times.add(consuls.get(i).getPeriod());
         }
 
         String json = this.gson.toJson(times);
