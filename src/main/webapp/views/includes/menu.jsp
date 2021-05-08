@@ -28,11 +28,15 @@
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <% if (u != null) { %>
                         <li><a class="dropdown-item" href="#">Perfil</a></li>
-                        <% if (!u.getCrm().equals("") && u.getCrm() != null) { %>
+                        <% if (!u.getCrm().equals("0") ) { %>
                             <li><a class="dropdown-item" href="${pageContext.request.contextPath}/logged/doctor/consultation-periods.jsp">Horário disponível para Consulta</a></li>
+                        <% }
+                        else { %>
+                            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/logged/patient/dashboard-patient.jsp">Lista médico</a></li>
                         <% } %>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/logout.jsp">Sair</a></li>
+
                     <% } else {%>
                         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/login.jsp">Entrar</a></li>
 
