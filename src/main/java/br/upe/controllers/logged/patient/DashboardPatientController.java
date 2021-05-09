@@ -41,19 +41,25 @@ public class DashboardPatientController extends HttpServlet {
         User u = (User) session.getAttribute("userlogged");
         DatabaseContext dbContext = DatabaseUtils.getDatabaseContext();
         List<User> users = dbContext.getUsers().ToArray();
-        ArrayList<String> doctors = new ArrayList<>();
+        ArrayList<User> doctors = new ArrayList<>();
 
         for (int i = 0; i < users.size(); i++) {
             try {
                 UserRole Tuser = dbContext.getUserRoles().Find("id", users.get(i).getUserRoleId());
                 if (Tuser.getName().equals(UserRole.DOCTOR)) {
                     System.out.println("Medicos " + users.get(i).getName());
-                    doctors.add(users.get(i).getName());
+                    doctors.add(users.get(i));
                 }
             } catch (Exception e) {
                 response.sendRedirect("/");
             }
         }
+        /*
+        User[] mDoctors = new User[doctors.size()];
+        for (int i = 0; i < doctors.size(); i++) {
+            mDoctors[i] = (User) doctors.get(i);
+        }
+        */
         request.setAttribute("doctors", doctors);
 
         request.getRequestDispatcher("/views/logged/dashboards/dashboard-patient.jsp").forward(request, response);

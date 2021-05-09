@@ -1,4 +1,5 @@
 <%@include file="/views/includes/start.jsp" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,77 +13,40 @@
     <script src="<%= request.getContextPath()%>/resources/js/calendar/fullcalendar.min.js"></script>
     <script src="<%= request.getContextPath()%>/resources/js/calendar/language/pt-br.js"></script>
     <br>
-    <script>
-        times = []
-        let dados = ""
-        $.ajax({
-            url: "<%= request.getContextPath()%>/logged/patient/getdoctor",
-            type: "post",
-            data: dados,
-            dataType: 'json',
-            success: function (json) {
-                let arr = $.map(json, function (el) {
-                    console.log(arr)
-                    return el;
-                })
-
-                for (value of arr) {
-                    times.push({
-                        title: value.period,
-                        start: value.dateString,
-                        data: value,
-                    });
-                }
-            },
-            error: function () {
-                msg.text("Erro ao fazer requisição");
-            }
-        });
-
-    </script>
-
 </head>
 <body>
+
 <div>
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nome</th>
-            <th scope="col">CRM</th>
+    <div class="container" style="min-height: 100vh;">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome do Médico</th>
+                <th scope="col">Crm</th>
+                <th scope="col">Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            <%@ page import="br.upe.model.entities.User" %>
+            <%@ page import="java.util.List" %>
+            <% List<User> doctors = (List<User>) request.getAttribute("doctors"); %>
 
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-
-
-                <%@ page import="br.upe.model.entities.User" %>
-                <%@ page import="java.util.List" %>
-                <% List<User> doctors = (List<User>) request.getAttribute("doctors"); %>
-
-                <% for (int i = 0; i < doctors.size(); i++) { %>
-                <th scope="row"><%doctors.get(i).getId();%></th>
-                <td><%doctors.get(i).getName();%></td>
-                <td><%doctors.get(i).getCrm();%></td>
-                <% }; %>
-
-
-
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-
-        </tr>
-        </tbody>
-    </table>
+            <% for (int k = 0; k < doctors.size(); k++) {%>
+            <tr>
+                <th scope="row">1</th>
+                <% User doctor = (User) doctors.get(k);%>
+                <td><%= doctor.getName() %>
+                </td>
+                <td><%= doctor.getCrm() %>
+                </td>
+                <td><%= doctor.getEmail() %>
+                </td>
+                <% } %>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <%@include file="/views/includes/end.jsp" %>

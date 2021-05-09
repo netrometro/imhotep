@@ -3,11 +3,11 @@ package br.upe.model.entities;
 import br.upe.service.core.Column;
 import br.upe.service.core.Table;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 @Table(name="users")
-public class
-User {
+public class User implements Serializable {
 
     @Column(name="id")
 
