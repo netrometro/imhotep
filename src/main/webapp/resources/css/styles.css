@@ -47,7 +47,7 @@ main {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: .5em 0;
+  padding: .3em 0;
 }
 
 .m-navbar .nav-content .logo a {
@@ -72,6 +72,7 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-top: .7em;
 }
 
 .m-navbar .nav-content .nav-login ul li {
@@ -554,7 +555,21 @@ main {
 }
 
 #calendar {
-  padding: .5em;
+  padding: 1.5em;
+}
+
+.title-dashboard {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 2em;
+}
+
+.title-dashboard h2 {
+  margin: auto;
 }
 
 footer {

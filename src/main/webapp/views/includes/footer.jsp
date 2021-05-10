@@ -1,7 +1,7 @@
 <footer>
     <div class="m-footer-container m-container">
         <div>
-            <img class="mb-2" src="<%= request.getContextPath()%>/resources/img/logo.png" alt="" width="24" height="19">
+            <img class="mb-2" src="<%= request.getContextPath()%>/resources/img/logo.png" alt="" width="50" height="50">
             <small class="d-block mb-3 text-muted">&copy; 2017–2021</small>
         </div>
         <div>

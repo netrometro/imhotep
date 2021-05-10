@@ -19,7 +19,7 @@
         align-items: center;
         justify-content: space-between;
 
-        padding: .5em 0;
+        padding: .3em 0;
 
         .logo {
             a {
@@ -33,11 +33,13 @@
         }
 
         .nav-login{
-
+      
             ul{
                 display: flex;
                 flex-direction: row;
                 align-items: center;
+                margin-top: .7em;
+
                 li{
                     display: block;
                     cursor: pointer;

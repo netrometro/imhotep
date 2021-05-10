@@ -122,7 +122,7 @@
 <%@include file="/views/includes/navbar.jsp" %>
 <main>
 
-<div id='calendar'></div>
+    <div id='calendar'></div>
 
 </main>
 <%@include file="/views/includes/footer.jsp" %>

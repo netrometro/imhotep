@@ -1,4 +1,3 @@
-<!--
 <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
         rel="stylesheet"
@@ -19,6 +18,3 @@
 <script src="<%= request.getContextPath()%>/resources/js/calendar/jquery.min.js"></script>
 <script src="<%= request.getContextPath()%>/resources/js/calendar/fullcalendar.min.js"></script>
 <script src="<%= request.getContextPath()%>/resources/js/calendar/language/pt-br.js"></script>
--->
-
-<link href="<%= request.getContextPath()%>/resources/css/styles.css" rel="stylesheet" />

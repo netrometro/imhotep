@@ -1,3 +1,13 @@
 #calendar{
-    padding: .5em;
+    padding: 1.5em;
+}
+
+.title-dashboard{
+    display: flex;
+    justify-content: center;
+    margin: 2em;
+
+    h2{
+        margin: auto;
+    }
 }

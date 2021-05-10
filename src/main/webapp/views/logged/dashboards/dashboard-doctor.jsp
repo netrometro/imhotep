@@ -52,6 +52,9 @@
 <body>
     <%@include file="/views/includes/navbar.jsp" %>
     <main>
+        <div class="title-dashboard">
+            <h2>Horários marcados como livre</h2>
+        </div>
         <div id='calendar' style="margin-top: 2em;"></div>
     </main>
     <%@include file="/views/includes/footer.jsp" %>

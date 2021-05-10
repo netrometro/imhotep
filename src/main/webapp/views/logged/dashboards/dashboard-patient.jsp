@@ -15,6 +15,10 @@
 <main>
 <div>
     <div class="m-container" style="min-height: 100vh;">
+
+        <div class="title-dashboard">
+            <h2>Médicos disponíveis</h2>
+        </div>
         <table class="table">
             <thead>
             <tr>
