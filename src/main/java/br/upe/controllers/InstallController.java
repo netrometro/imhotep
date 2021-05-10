@@ -76,14 +76,14 @@ public class InstallController extends HttpServlet {
     private String generateTimesAdd(int hrs, int days){
         String strLocalTime2   = ""+
                 LocalDateTime.now().plusDays(days).plusHours(hrs).minusHours(0).format(DateTimeFormatter.ofPattern("HH:mm")) + "-" +
-                LocalDateTime.now().plusDays(days).plusHours(hrs).minusHours(30).format(DateTimeFormatter.ofPattern("HH:mm"));
+                LocalDateTime.now().plusDays(days).plusHours(hrs).minusHours(30).format(DateTimeFormatter.ofPattern("HH:mm")) + "";
         return strLocalTime2;
     }
 
     private String generateTimesMinus(int hrs, int days){
         String strLocalTime2   = ""+
-                LocalDateTime.now().minusDays(days).plusHours(hrs).minusHours(0).format(DateTimeFormatter.ofPattern("HH:mm")) + "-" +
-                LocalDateTime.now().minusDays(days).plusHours(hrs).minusHours(30).format(DateTimeFormatter.ofPattern("HH:mm"));
+                LocalDateTime.now().minusDays(days).plusHours(hrs).minusHours(0).format(DateTimeFormatter.ofPattern("HH:mm")) + "-"+
+                LocalDateTime.now().minusDays(days).plusHours(hrs).minusHours(30).format(DateTimeFormatter.ofPattern("HH:mm")) + "";
         return strLocalTime2;
     }
 }

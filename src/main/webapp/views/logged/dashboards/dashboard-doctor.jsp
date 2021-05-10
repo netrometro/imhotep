@@ -21,15 +21,17 @@
                         for (value of arr) {
                             times.push({
                                 title: value.period,
-                                start: value.dateString,
-                                data: value,
+                                start: value.dateString +"T"+ value.period,
+
                             });
                         }
+
+                        console.log(times)
 
                         $(document).ready(function () {
                             $('#calendar').fullCalendar({
                                 header: {
-                                    center: 'month,agendaWeek,agendaDay,listWeek, addEventButton',
+                                    center: 'agendaWeek',
                                     right: 'today, prev,next', //'addEventButton',
                                     left: 'title',
                                 },
