@@ -6,7 +6,7 @@
         </div>
         <div>
             <h5>Redes Socias</h5>
-            <ul class="list-unstyled text-small">
+            <ul>
                 <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Instagram</a></li>
                 <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Facebook</a></li>
                 <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">WhatsApp</a></li>
@@ -17,7 +17,7 @@
         </div>
         <div>
             <h5>Sobre</h5>
-            <ul class="list-unstyled text-small">
+            <ul>
                 <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Contado</a></li>
                 <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Quer desenvolver algo parecido?</a></li>
                 <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Termos de Uso</a></li>
@@ -26,7 +26,7 @@
         </div>
         <div>
             <h5>Desenvolvedores</h5>
-            <ul class="list-unstyled text-small">
+            <ul>
                 <li class="mb-1"><a class="link-secondary text-decoration-none" target="_blank" href="https://github.com/abraaodeveloper">Abraão Barbosa</a></li>
                 <li class="mb-1"><a class="link-secondary text-decoration-none" target="_blank" href="#">Alisson Rodrigo</a></li>
                 <li class="mb-1"><a class="link-secondary text-decoration-none" target="_blank" href="#">Daniel Barros</a></li>
