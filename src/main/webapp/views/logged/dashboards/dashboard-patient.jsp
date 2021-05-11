@@ -45,7 +45,7 @@
                 </td>
                 <td>
 
-                    <form action="<%= request.getContextPath()%>/logged/patient/scheduling-doctor.jsp">
+                    <form action="<%= request.getContextPath()%>/logged/patient/scheduling-doctor.jsp" method="post">
                         <input type="hidden" name="id" value="<%= doctor.getId() %>"/>
                         <input type="submit" value="Agendamento" class="btn btn-primary" />
                     </form>
