@@ -1,0 +1,48 @@
+.home-infos{
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    margin: auto;
+    padding: 10vh 0;
+
+    .home-info-info{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        h3{
+            font-size: xx-large;
+        }
+        p{
+
+        }
+    }
+
+    .home-info-img{
+        width: 50%;
+
+        img{
+            width: 90%;
+        }
+    }
+}
+
+.home-info-txt{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+
+    background-color: $color-main-white;
+
+    h2{
+        font-size: xx-large;
+    }
+
+    p{
+
+    }
+}

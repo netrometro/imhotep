@@ -49,7 +49,6 @@ public class TimesController extends HttpServlet {
         }
 
         String json = this.gson.toJson(times);
-        System.out.println(json);
 
         PrintWriter out = response.getWriter();
         response.setContentType("application/json");
