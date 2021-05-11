@@ -15,6 +15,7 @@ public class SqlUtils {
                 "password varchar NOT NULL, " +
                 "crm varchar, " +
                 "user_role_id integer, " +
+                "specialties varchar, " +
                 "CONSTRAINT fk_user_role FOREIGN KEY(user_role_id) REFERENCES user_roles(id));";
 
     public static final String SQL_TABLE_OF_CONSULTATION_PERIODS = "CREATE TABLE consultation_periods (" +

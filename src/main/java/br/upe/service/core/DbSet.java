@@ -170,7 +170,12 @@ public class DbSet<T> implements IDbSet<T> {
 
             try {
                 Method method = object.getClass().getMethod(getMethodName);
-                values.append("'" + method.invoke(object).toString() + "'");
+                Object value = method.invoke(object);
+                if (value != null) {
+                    values.append("'" + method.invoke(object).toString() + "'");
+                }else {
+                    values.append("'NULL'");
+                }
             } catch (NoSuchMethodException | SecurityException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
