@@ -54,7 +54,10 @@
                 </td>
                 <td><%= doctor.getSpecialties() %>
                 </td>
-                <td><button class="btn btn-second" onclick="goToDoctorDashboard('<%= doctor.getId() %>')" >Acesse esse médico</button>
+                <td><form action="<%= request.getContextPath()%>/logged/patient/scheduling-doctor.jsp" method="post">
+                    <input type="hidden" name="id" value="<%= doctor.getId() %>"/>
+                    <input type="submit" value="Agendamento" class="btn btn-success" />
+                </form>
                 </td>
                 <% } %>
             </tr>
