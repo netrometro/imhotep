@@ -13,6 +13,8 @@ public class ConsultationEntity {
     private String period;
     @Column(name = "date")
     private Date date;
+    @Column(name = "id_patient")
+    private int idPatient;
     @Column(name = "users_crm", foreignKey = true)
     private String userCrm;
 
@@ -25,6 +27,14 @@ public class ConsultationEntity {
         this.period = period;
         this.date = date;
         this.userCrm = userCrm;
+    }
+
+    public int getIdPatient() {
+        return idPatient;
+    }
+
+    public void setIdPatient(int idPatient) {
+        this.idPatient = idPatient;
     }
 
     public int getId() {

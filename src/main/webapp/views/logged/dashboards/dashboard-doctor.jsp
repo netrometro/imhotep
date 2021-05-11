@@ -18,12 +18,24 @@
                             return el;
                         })
 
+                        console.log(arr)
+
                         for (value of arr) {
                             const t = value.period.split("-");
+                            let iduser = null;
+                            let eColor = "#c7dfda"
+                            if (value.idPatient){
+                                iduser = value.idPatient;
+                                eColor = "#E97F7F";
+                            }
                             times.push({
                                 title: value.period,
                                 start: value.dateString +"T"+ t[0],
-                                end: value.dateString +"T"+ t[1]
+                                end: value.dateString +"T"+ t[1],
+                                //se o horario estiver agendado criar isso abaixo
+                                idPatient: iduser,
+                                //namePatient: "",
+                                color: eColor,
                             });
                         }
 
@@ -42,6 +54,14 @@
                                 eventLimit: true, // allow "more" link when too many events
 
                                 events: times,
+                                eventClick: function(info) {
+                                    if (info.idPatient) {
+                                        let url = "<%= request.getContextPath()%>/logged/doctor/view-patient.jsp?id="+info.idPatient;
+                                        let a = document.createElement('a');
+                                        a.href = url;
+                                        a.click();
+                                    }
+                                },
                             });
                         });
                     },
