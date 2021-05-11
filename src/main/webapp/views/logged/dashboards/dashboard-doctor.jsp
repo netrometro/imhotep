@@ -19,10 +19,11 @@
                         })
 
                         for (value of arr) {
+                            const t = value.period.split("-");
                             times.push({
                                 title: value.period,
-                                start: value.dateString +"T"+ value.period,
-
+                                start: value.dateString +"T"+ t[0],
+                                end: value.dateString +"T"+ t[1]
                             });
                         }
 
