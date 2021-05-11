@@ -48,6 +48,8 @@ public class TimesController extends HttpServlet {
             times.add(new Consultation(consuls.get(i), consuls.get(i).getDate().toString()));
         }
 
+        times.get(0).setIdPatient(1);
+
         String json = this.gson.toJson(times);
 
         PrintWriter out = response.getWriter();

@@ -22,6 +22,7 @@ public class SqlUtils {
                 "id serial PRIMARY KEY, " +
                 "period varchar, " +
                 "date varchar, " +
+                "id_patient integer, " +
                 "users_crm integer);";
 
     public static final String SQL_STANDARD_USER_TYPES = "" +

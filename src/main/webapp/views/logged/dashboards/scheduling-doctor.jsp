@@ -5,14 +5,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <%@ page import="br.upe.model.entities.User" %>
+    <% User doctor = (User) request.getAttribute("doctor"); %>
     <%@include file="/views/includes/links-css.jsp" %>
     <script>
         times = []
         let dados = ""
         $.ajax({
-            url: "<%= request.getContextPath()%>/logged/patient/scheduling-doctor.jsp",
-            type: "post",
+            url: "<%= request.getContextPath()%>/logged/patient/scheduling-doctor.jsp?crm="+<%= doctor.getCrm() %>,
+            type: "get",
             data: dados,
             dataType: 'json',
             success: function (json) {
@@ -20,12 +21,25 @@
                     return el;
                 })
 
+                console.log(arr)
+
                 for (value of arr) {
                     const t = value.period.split("-");
+                    let iduser = null;
+                    let eColor = "#c7dfda"
+                    if (value.idPatient){
+                        iduser = value.idPatient;
+                        eColor = "#E97F7F";
+                    }
                     times.push({
                         title: value.period,
                         start: value.dateString +"T"+ t[0],
-                        end: value.dateString +"T"+ t[1]
+                        end: value.dateString +"T"+ t[1],
+                        //se o horario estiver agendado criar isso abaixo
+                        idPatient: iduser,
+                        //namePatient: "",
+                        idConsultation: value.id,
+                        color: eColor,
                     });
                 }
 
@@ -44,6 +58,12 @@
                         eventLimit: true, // allow "more" link when too many events
 
                         events: times,
+                        eventClick: function(info) {
+                            let url = "<%= request.getContextPath()%>/logged/patient/scheduling-settime?idconsultation="+1;
+                            let a = document.createElement('a');
+                            a.href = url;
+                            a.click();
+                        },
                     });
                 });
             },
@@ -52,6 +72,7 @@
             }
         });
     </script>
+
     <title>Horários</title>
 </head>
 <body>
@@ -59,8 +80,7 @@
 <main>
 
     <div id='calendar'></div>
-    <%@ page import="br.upe.model.entities.User" %>
-    <% User doctor = (User) request.getAttribute("doctor"); %>
+
     Informações sobre o médico:
     <%= doctor.getName() %>
 </main>
