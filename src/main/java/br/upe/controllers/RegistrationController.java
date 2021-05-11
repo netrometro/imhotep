@@ -41,6 +41,7 @@ public class RegistrationController extends HttpServlet {
             System.out.println("doctor");
             user.setUserRoleId(1);
             user.setCrm(request.getParameter("crm"));
+            user.setSpecialties(request.getParameter("specialties"));
         } else if (checkEmployee != null) {
             System.out.println("employee");
             user.setCrm(request.getParameter("crm"));
