@@ -9,6 +9,7 @@ import br.upe.model.entities.User;
 import br.upe.model.entities.UserRole;
 import br.upe.service.core.DbSet;
 import br.upe.service.core.IDbSet;
+import br.upe.service.core.UsersDbSet;
 import br.upe.util.SqlUtils;
 
 public class DatabaseContext {
@@ -16,12 +17,22 @@ public class DatabaseContext {
     private IDbSet<UserRole> userRoles;
     private IDbSet<User> users;
     private IDbSet<ConsultationEntity> consultations;
+    private UsersDbSet UsersDbSet;
 
     public DatabaseContext(Connection databaseConnection){        
         conn = databaseConnection;
         userRoles = new DbSet<UserRole>(databaseConnection, UserRole.class);
         users = new DbSet<User>(databaseConnection, User.class);
         consultations = new DbSet<ConsultationEntity>(databaseConnection, ConsultationEntity.class);
+        setUsersDbSet(new UsersDbSet(databaseConnection, User.class));
+    }
+
+    public UsersDbSet getUsersDbSet() {
+        return UsersDbSet;
+    }
+
+    public void setUsersDbSet(UsersDbSet usersDbSet) {
+        this.UsersDbSet = usersDbSet;
     }
 
     public IDbSet<ConsultationEntity> getConsultations() {

@@ -13,6 +13,7 @@
                 <li><a class="m-menu-item" href="${pageContext.request.contextPath}/logged/doctor/consultation-periods.jsp">Horário disponível para Consulta</a></li>
                 <% } else { %>
                 <li><a class="m-menu-item" href="${pageContext.request.contextPath}/logged/patient/dashboard-patient.jsp">Lista médico</a></li>
+                <li><a class="m-menu-item" href="${pageContext.request.contextPath}/logged/patient/search-doctors.jsp">Buscar Médico</a></li>
                 <% } %>
                 <% }%>
                 <% if (u != null) { %>
