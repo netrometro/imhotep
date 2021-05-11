@@ -1,23 +1,24 @@
-<%@include file="/views/includes/start.jsp" %>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-    <meta charset='utf-8'/>
-    <link href="<%= request.getContextPath()%>/resources/css/calendar/fullcalendar.css" rel="stylesheet"/>
-    <link href="<%= request.getContextPath()%>/resources/css/calendar/stylecalendar.css" rel="stylesheet"/>
-    <link href="<%= request.getContextPath()%>/resources/css/calendar/fullcalendar.print.min.css" rel='stylesheet'
-          media='print'/>
-    <script src="<%= request.getContextPath()%>/resources/js/calendar/moment.min.js"></script>
-    <script src="<%= request.getContextPath()%>/resources/js/calendar/jquery.min.js"></script>
-    <script src="<%= request.getContextPath()%>/resources/js/calendar/fullcalendar.min.js"></script>
-    <script src="<%= request.getContextPath()%>/resources/js/calendar/language/pt-br.js"></script>
-    <br>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <%@include file="/views/includes/links-css.jsp" %>
+
+    <title>Dashboard do Paciente</title>
 </head>
 <body>
-
+<%@include file="/views/includes/navbar.jsp" %>
+<main>
 <div>
-    <div class="container" style="min-height: 100vh;">
+    <div class="m-container" style="min-height: 100vh;">
+
+        <div class="title-dashboard">
+            <h2>Médicos disponíveis</h2>
+        </div>
         <table class="table">
             <thead>
             <tr>
@@ -48,6 +49,11 @@
         </table>
     </div>
 </div>
+</main>
+<%@include file="/views/includes/footer.jsp" %>
+<%@include file="/views/includes/scripts-js.jsp" %>
+<%@include file="/views/includes/scripts-js.jsp" %>
+</body>
+</html>
 
-<%@include file="/views/includes/end.jsp" %>
 

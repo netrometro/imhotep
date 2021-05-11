@@ -39,8 +39,6 @@ public class UserFilter implements Filter {
             res.setHeader("Pragma", "no-cache");
             res.setHeader("Expires", "-1");
             chain.doFilter(request, response);
-
-            System.out.println(u.toString());
         }
     }
 

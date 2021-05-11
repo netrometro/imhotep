@@ -52,15 +52,13 @@ public class LoginController extends HttpServlet {
             try {
                 DatabaseContext dbContext = DatabaseUtils.getDatabaseContext();
                 User user = dbContext.getUsers().Find("cpf", login);
-                System.out.println("Usuario logado " + user);
+
                 if (user != null) {
                     if (user.getPassword().equalsIgnoreCase(senha)) {
                         request.getSession().setAttribute(USER_LOGGED_ATTRIBUTE_NAME, user);
 
-                        //System.out.println("O erro foi: "+user.toString());
                         DatabaseContext dbContext2 = DatabaseUtils.getDatabaseContext();
                         UserRole userRole = dbContext2.getUserRoles().Find(user.getUserRoleId());
-                        //System.out.println("uerRole "+userRole.toString());
                         if(userRole.getName().equalsIgnoreCase(UserRole.DOCTOR)){
                             response.sendRedirect("logged/doctor/dashboard-doctor.jsp");
                             return;

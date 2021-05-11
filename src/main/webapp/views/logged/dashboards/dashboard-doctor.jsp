@@ -1,65 +1,67 @@
-<%@include file="/views/includes/start.jsp" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-    <meta charset='utf-8'/>
-    <link href="<%= request.getContextPath()%>/resources/css/calendar/fullcalendar.css" rel="stylesheet"/>
-    <link href="<%= request.getContextPath()%>/resources/css/calendar/stylecalendar.css" rel="stylesheet"/>
-    <link href="<%= request.getContextPath()%>/resources/css/calendar/fullcalendar.print.min.css" rel='stylesheet' media='print'/>
-    <script src="<%= request.getContextPath()%>/resources/js/calendar/moment.min.js"></script>
-    <script src="<%= request.getContextPath()%>/resources/js/calendar/jquery.min.js"></script>
-    <script src="<%= request.getContextPath()%>/resources/js/calendar/fullcalendar.min.js"></script>
-    <script src="<%= request.getContextPath()%>/resources/js/calendar/language/pt-br.js"></script>
-    <br>
-    <script>
-        times = []
-        let dados = ""
-        $.ajax({
-            url: "<%= request.getContextPath()%>/logged/doctor/gettimes",
-            type: "post",
-            data: dados,
-            dataType: 'json',
-            success: function (json) {
-                let arr = $.map(json, function (el) {
-                    return el;
-                })
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%@include file="/views/includes/links-css.jsp" %>
+        <script>
+                times = []
+                let dados = ""
+                $.ajax({
+                    url: "<%= request.getContextPath()%>/logged/doctor/gettimes",
+                    type: "post",
+                    data: dados,
+                    dataType: 'json',
+                    success: function (json) {
+                        let arr = $.map(json, function (el) {
+                            return el;
+                        })
 
-                for (value of arr) {
-                    times.push({
-                        title: value.period,
-                        start: value.dateString,
-                        data: value,
-                    });
-                }
+                        for (value of arr) {
+                            const t = value.period.split("-");
+                            times.push({
+                                title: value.period,
+                                start: value.dateString +"T"+ t[0],
+                                end: value.dateString +"T"+ t[1]
+                            });
+                        }
 
-                $(document).ready(function () {
-                    $('#calendar').fullCalendar({
-                        header: {
-                            center: 'month,agendaWeek,agendaDay,listWeek, addEventButton',
-                            right: 'today, prev,next', //'addEventButton',
-                            left: 'title',
-                        },
-                        defaultDate: Date(),
-                        navLinks: true, // can click day/week names to navigate views
-                        editable: true,
-                        eventLimit: true, // allow "more" link when too many events
+                        console.log(times)
 
-                        events: times,
-                    });
+                        $(document).ready(function () {
+                            $('#calendar').fullCalendar({
+                                header: {
+                                    center: 'agendaWeek',
+                                    right: 'today, prev,next', //'addEventButton',
+                                    left: 'title',
+                                },
+                                defaultDate: Date(),
+                                navLinks: true, // can click day/week names to navigate views
+                                editable: true,
+                                eventLimit: true, // allow "more" link when too many events
+
+                                events: times,
+                            });
+                        });
+                    },
+                    error: function () {
+                        msg.text("Erro ao fazer requisição");
+                    }
                 });
-            },
-            error: function () {
-                msg.text("Erro ao fazer requisição");
-            }
-        });
-
-    </script>
-
+        </script>
+        <title>Dashboard do Médico</title>
 </head>
 <body>
-
-<div id='calendar'></div>
-
-
-<%@include file="/views/includes/end.jsp" %>
-
+    <%@include file="/views/includes/navbar.jsp" %>
+    <main>
+        <div class="title-dashboard">
+            <h2>Horários marcados como livre</h2>
+        </div>
+        <div id='calendar' style="margin-top: 2em;"></div>
+    </main>
+    <%@include file="/views/includes/footer.jsp" %>
+    <%@include file="/views/includes/scripts-js.jsp" %>
+    <%@include file="/views/includes/scripts-js.jsp" %>
+</body>
+</html>
