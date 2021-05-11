@@ -40,6 +40,24 @@ public class SchedulingPatientController extends HttpServlet {
         User doctor = dbContext.getUsers().Find("id", idDoctor);
         request.setAttribute("doctor", doctor);
 
+        List<ConsultationEntity> consuls = dbContext.getConsultations().ToArray();
+        ArrayList<Consultation> times = new ArrayList<>();
+
+        for(int i=0; i<consuls.size(); i++){
+            if(!doctor.getCrm().equals(consuls.get(i).getUserCrm())) continue;
+            times.add(new Consultation(consuls.get(i), consuls.get(i).getDate().toString()));
+        }
+
+        String json = this.gson.toJson(times);
+
+        PrintWriter out = response.getWriter();
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+
+        out.print(json);
+        out.flush();
+
+
         request.getRequestDispatcher("/views/logged/dashboards/scheduling-doctor.jsp").forward(request, response);
     }
         protected void doPost(HttpServletRequest request, HttpServletResponse response)
