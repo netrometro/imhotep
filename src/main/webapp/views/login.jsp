@@ -52,6 +52,10 @@
                         <i class="fas fa-id-card"></i>
                         <input name="crm" type="text" class="form-control cep-mask" placeholder="CRM" maxlength="10">
                     </label>
+                    <label for="specialties" class="label-input">
+                        <i class="fas fa-id-card"></i>
+                        <input name="specialties" type="text" class="form-control" placeholder="Especialidades" />
+                    </label>
                 </div>
                 <label for="birthday" class="label-input">
                     <i class="far fa-calendar-alt" for="birthday"></i>

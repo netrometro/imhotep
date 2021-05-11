@@ -16,7 +16,7 @@ public class DbSet<T> implements IDbSet<T> {
 
     private Connection conn;
     private Class<T> type;
-    private String tableName;
+    protected String tableName;
 
     public DbSet(Connection databaseConnection, Class<T> type) {
         conn = databaseConnection;
@@ -68,9 +68,20 @@ public class DbSet<T> implements IDbSet<T> {
     public List<T> ToArray() {
         String command = "SELECT * FROM " + tableName;
         List<T> list = null;
+        list = getListFromCommand(command);
+        return list;
+    }
+
+
+    public List<T> FindAll(String field, Object value) {
+        String command = "SELECT * FROM " + tableName + " WHERE " + field + "='" + value.toString() + "';";
+        return getListFromCommand(command);
+    }
+
+    protected List<T> getListFromCommand(String command) {
+        List<T> list = new ArrayList<T>();;
         try {
             ResultSet queryResult = conn.createStatement().executeQuery(command);
-            list = new ArrayList<T>();
             while (queryResult.next()) {
                 list.add(createObjectFromQuery(queryResult));
             }
@@ -170,7 +181,12 @@ public class DbSet<T> implements IDbSet<T> {
 
             try {
                 Method method = object.getClass().getMethod(getMethodName);
-                values.append("'" + method.invoke(object).toString() + "'");
+                Object value = method.invoke(object);
+                if (value != null) {
+                    values.append("'" + method.invoke(object).toString() + "'");
+                }else {
+                    values.append("'NULL'");
+                }
             } catch (NoSuchMethodException | SecurityException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();

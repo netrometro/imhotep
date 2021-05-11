@@ -34,6 +34,9 @@ public class User implements Serializable {
     @Column(name="user_role_id")
     private int userRoleId;
 
+    @Column(name="specialties")
+    private String specialties;
+
     public User(){
     }
 
@@ -47,6 +50,15 @@ public class User implements Serializable {
         this.crm = crm;
         this.userRoleId = userRoleId;
     }
+    
+    public String getSpecialties() {
+        return this.specialties;
+    }
+
+    public void setSpecialties(String specialties) {
+        this.specialties = specialties;
+    }
+
 
     public String getCpf(){
         return cpf;
