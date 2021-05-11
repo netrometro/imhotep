@@ -8,13 +8,20 @@
         <div class="nav-login">
             <ul>
                 <% if (u != null) { %>
-                <li><a class="m-menu-item" href="#">Perfil</a></li>
-                <% if (!u.getCrm().equals("0") ) { %>
-                <li><a class="m-menu-item" href="${pageContext.request.contextPath}/logged/doctor/consultation-periods.jsp">Horário disponível para Consulta</a></li>
-                <% } else { %>
-                <li><a class="m-menu-item" href="${pageContext.request.contextPath}/logged/patient/dashboard-patient.jsp">Lista médico</a></li>
-                <li><a class="m-menu-item" href="${pageContext.request.contextPath}/logged/patient/search-doctors.jsp">Buscar Médico</a></li>
-                <% } %>
+                    <% if (u.getUserRoleId() == 1 ) { %>
+                        <li><a class="m-menu-item" href="${pageContext.request.contextPath}/logged/doctor/dashboard-doctor.jsp">Dashboard</a></li>
+                    <% }else if (u.getUserRoleId() == 2) { %>
+                        <li><a class="m-menu-item" href="${pageContext.request.contextPath}/logged/employee/dashboard-employee.jsp">Dashboard</a></li>
+                    <% }else if (u.getUserRoleId() == 3) { %>
+                        <li><a class="m-menu-item" href="${pageContext.request.contextPath}/logged/patient/dashboard-patient.jsp">Dashboard</a></li>
+                    <% } %>
+
+                    <% if (!u.getCrm().equals("0") ) { %>
+                    <li><a class="m-menu-item" href="${pageContext.request.contextPath}/logged/doctor/consultation-periods.jsp">Horários disponíveis para Consulta</a></li>
+                    <% } else { %>
+                    <li><a class="m-menu-item" href="${pageContext.request.contextPath}/logged/patient/dashboard-patient.jsp">Listar médicos</a></li>
+                    <li><a class="m-menu-item" href="${pageContext.request.contextPath}/logged/patient/search-doctors.jsp">Buscar Médico</a></li>
+                    <% } %>
                 <% }%>
                 <% if (u != null) { %>
                     <li style="margin-left: 4em;"><a class="m-menu-item" href="${pageContext.request.contextPath}/logged/patient/dashboard-patient.jsp">Olá ${sessionScope.userlogged.name}</a></li>

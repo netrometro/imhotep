@@ -65,7 +65,6 @@
 </main>
 <%@include file="/views/includes/footer.jsp" %>
 <%@include file="/views/includes/scripts-js.jsp" %>
-<%@include file="/views/includes/scripts-js.jsp" %>
 <script>
     function searchForDoctorSpecialty(){
         let value = document.getElementById("specialties").value;

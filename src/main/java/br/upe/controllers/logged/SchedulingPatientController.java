@@ -1,5 +1,6 @@
-package br.upe.controllers.logged.patient;
+package br.upe.controllers.logged;
 
+import br.upe.controllers.auth.LoginController;
 import br.upe.model.entities.ConsultationEntity;
 import br.upe.model.entities.User;
 import br.upe.model.entities.UserRole;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,34 +34,13 @@ public class SchedulingPatientController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpServletResponse res = (HttpServletResponse) response;
-        HttpServletRequest req = (HttpServletRequest) request;
-        HttpSession session = req.getSession();
 
-        User u = (User) session.getAttribute("userlogged");
+        String idDoctor = request.getParameter("id");
         DatabaseContext dbContext = DatabaseUtils.getDatabaseContext();
-        List<User> users = dbContext.getUsers().ToArray();
-        ArrayList<User> doctors = new ArrayList<>();
-        List<ConsultationEntity> consuls = dbContext.getConsultations().ToArray();
-        ArrayList<Consultation> times = new ArrayList<Consultation>();
+        User doctor = dbContext.getUsers().Find("id", idDoctor);
+        request.setAttribute("doctor", doctor);
 
-        for (int i = 0; i < consuls.size(); i++) {
-            if (users.get(i).getCrm().equals(doctors.get(i).getCrm())) continue;
-                times.add(new Consultation(consuls.get(i), consuls.get(i).getDate().toString()));
-
-
-
-        }
-
-        String json = this.gson.toJson(times);
-        System.out.println(json);
-
-        PrintWriter out = response.getWriter();
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-
-        out.print(json);
-        out.flush();
+        request.getRequestDispatcher("/views/logged/dashboards/scheduling-doctor.jsp").forward(request, response);
     }
         protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

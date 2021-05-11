@@ -46,6 +46,7 @@
                 <td>
 
                     <form action="<%= request.getContextPath()%>/logged/patient/scheduling-doctor.jsp">
+                        <input type="hidden" name="id" value="<%= doctor.getId() %>"/>
                         <input type="submit" value="Agendamento" class="btn btn-primary" />
                     </form>
 
@@ -58,7 +59,6 @@
 </div>
 </main>
 <%@include file="/views/includes/footer.jsp" %>
-<%@include file="/views/includes/scripts-js.jsp" %>
 <%@include file="/views/includes/scripts-js.jsp" %>
 </body>
 </html>

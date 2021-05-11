@@ -123,10 +123,12 @@
 <main>
 
     <div id='calendar'></div>
-
+    <%@ page import="br.upe.model.entities.User" %>
+    <% User doctor = (User) request.getAttribute("doctor"); %>
+    Informações sobre o médico:
+    <%= doctor.getName() %>
 </main>
 <%@include file="/views/includes/footer.jsp" %>
-<%@include file="/views/includes/scripts-js.jsp" %>
 <%@include file="/views/includes/scripts-js.jsp" %>
 </body>
 </html>
