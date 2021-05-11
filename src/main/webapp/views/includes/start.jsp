@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
 
+
     <link href="<%= request.getContextPath()%>/resources/css/style.css" rel="stylesheet" />
     <title>Imhotep</title>
 </head>

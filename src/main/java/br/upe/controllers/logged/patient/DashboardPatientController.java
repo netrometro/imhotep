@@ -54,12 +54,7 @@ public class DashboardPatientController extends HttpServlet {
                 response.sendRedirect("/");
             }
         }
-        /*
-        User[] mDoctors = new User[doctors.size()];
-        for (int i = 0; i < doctors.size(); i++) {
-            mDoctors[i] = (User) doctors.get(i);
-        }
-        */
+
         request.setAttribute("doctors", doctors);
 
         request.getRequestDispatcher("/views/logged/dashboards/dashboard-patient.jsp").forward(request, response);

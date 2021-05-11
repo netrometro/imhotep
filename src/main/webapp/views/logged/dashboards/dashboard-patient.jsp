@@ -34,13 +34,20 @@
 
             <% for (int k = 0; k < doctors.size(); k++) {%>
             <tr>
-                <th scope="row">1</th>
+                <th scope="row"><%= k+1%></th>
                 <% User doctor = (User) doctors.get(k);%>
                 <td><%= doctor.getName() %>
                 </td>
                 <td><%= doctor.getCrm() %>
                 </td>
                 <td><%= doctor.getEmail() %>
+                </td>
+                <td>
+
+                    <form action="<%= request.getContextPath()%>/logged/patient/scheduling-doctor.jsp">
+                        <input type="submit" value="Agendamento" class="btn btn-primary" />
+                    </form>
+
                 </td>
                 <% } %>
             </tr>

@@ -69,6 +69,7 @@ public class LoginController extends HttpServlet {
                             return;
                         }else if(userRole.getName().equalsIgnoreCase(UserRole.PATIENT)){
                             response.sendRedirect("logged/patient/dashboard-patient.jsp");
+
                             return;
                         }
 
