@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <%@include file="/views/includes/links-css.jsp" %>
 
     <title>Dashboard do Paciente</title>
@@ -26,6 +26,7 @@
                 <th scope="col">Nome do Médico</th>
                 <th scope="col">Crm</th>
                 <th scope="col">Email</th>
+                <th scope="col">Especialização</th>
             </tr>
             </thead>
             <tbody>
@@ -43,11 +44,12 @@
                 </td>
                 <td><%= doctor.getEmail() %>
                 </td>
+                <td><%= doctor.getSpecialties()%></td>
                 <td>
 
                     <form action="<%= request.getContextPath()%>/logged/patient/scheduling-doctor.jsp" method="post">
                         <input type="hidden" name="id" value="<%= doctor.getId() %>"/>
-                        <input type="submit" value="Agendamento" class="btn btn-success" />
+                        <button class="btn btn-second" >Agendamento</button>
                     </form>
 
                 </td>

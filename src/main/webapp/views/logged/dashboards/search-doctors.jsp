@@ -15,19 +15,15 @@
 <main>
 <div>
     <div class="m-container" style="min-height: 100vh;">
-        <div class="title-dashboard">
-            <h2>Pesquise por um médico</h2>
-        </div>
+        <br>
         <form onsubmit="event.preventDefault();">
-            <div class="form-group">
-                <label for="specialties">Especialidades ou Nome</label>
-                <input type="text" class="form-control" id="specialties" aria-describedby="emailHelp" placeholder="">
+            <div class="form-group d-flex justify-content-end" >
+                <input type="text" class="form-control" id="specialties" placeholder="Especialidades ou Nome" aria-describedby="emailHelp" placeholder="">
+                <button class="btn btn-second" onclick="searchForDoctorSpecialty()">Procurar</button>
             </div>
-            <button class="btn btn-second" onclick="searchForDoctorSpecialty()">Procurar</button>
+
         </form>
-        <div class="title-dashboard">
-            <h2>Resultado da Busca</h2>
-        </div>
+        <br>
         <table class="table">
             <thead>
             <tr>
@@ -35,6 +31,7 @@
                 <th scope="col">Nome do Médico</th>
                 <th scope="col">Crm</th>
                 <th scope="col">Email</th>
+                <th scope="col">Especialização</th>
             </tr>
             </thead>
             <tbody>
@@ -54,10 +51,11 @@
                 </td>
                 <td><%= doctor.getSpecialties() %>
                 </td>
-                <td><form action="<%= request.getContextPath()%>/logged/patient/scheduling-doctor.jsp" method="post">
-                    <input type="hidden" name="id" value="<%= doctor.getId() %>"/>
-                    <input type="submit" value="Agendamento" class="btn btn-success" />
-                </form>
+                <td>
+                    <form action="<%= request.getContextPath()%>/logged/patient/scheduling-doctor.jsp" method="post">
+                        <input type="hidden" name="id" value="<%= doctor.getId() %>"/>
+                        <button class="btn btn-second" >Agendamento</button>
+                    </form>
                 </td>
                 <% } %>
             </tr>

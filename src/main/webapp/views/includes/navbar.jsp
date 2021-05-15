@@ -27,7 +27,7 @@
                     <li style="margin-left: 4em;"><a class="m-menu-item" href="${pageContext.request.contextPath}/logged/patient/dashboard-patient.jsp">Olá ${sessionScope.userlogged.name}</a></li>
                     <li style="padding: 4px 14px; border: 1px solid #ddd; border-radius: .3em;"><a class="m-menu-item" href="${pageContext.request.contextPath}/logout.jsp">Sair</a></li>
                 <% } else {%>
-                    <li style="margin-left: 4em; padding: 4px 14px; border: 1px solid #ddd; border-radius: .3em;"><a class="m-menu-item" href="${pageContext.request.contextPath}/login.jsp">Entrar</a></li>
+                    <li style="margin-left: 4em; padding: 4px 14px; border: 1px solid #ddd; border-radius: .3em;"><a class="m-menu-item" href="${pageContext.request.contextPath}/login.jsp">Entrar ou Cadastrar</a></li>
                 <% }%>
             </ul>
         </div>
