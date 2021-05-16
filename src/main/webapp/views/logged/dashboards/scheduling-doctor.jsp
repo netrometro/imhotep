@@ -12,7 +12,7 @@
         times = []
         let dados = ""
         $.ajax({
-            url: "<%= request.getContextPath()%>/logged/patient/scheduling-doctor.jsp?crm="+<%= doctor.getCrm() %>,
+            url: "<%= request.getContextPath()%>/logged/patient/scheduling-doctor.jsp?crm=" +<%= doctor.getCrm() %>,
             type: "get",
             data: dados,
             dataType: 'json',
@@ -21,20 +21,21 @@
                     return el;
                 })
 
-                console.log(arr)
+                console.log("Antes: ", arr)
 
                 for (value of arr) {
                     const t = value.period.split("-");
                     let iduser = null;
                     let eColor = "#c7dfda"
-                    if (value.idPatient){
+
+                    if (value.idPatient) {
                         iduser = value.idPatient;
                         eColor = "#E97F7F";
                     }
                     times.push({
                         title: value.period,
-                        start: value.dateString +"T"+ t[0],
-                        end: value.dateString +"T"+ t[1],
+                        start: value.dateString + "T" + t[0],
+                        end: value.dateString + "T" + t[1],
                         //se o horario estiver agendado criar isso abaixo
                         idPatient: iduser,
                         //namePatient: "",
@@ -42,8 +43,6 @@
                         color: eColor,
                     });
                 }
-
-                console.log(times)
 
                 $(document).ready(function () {
                     $('#calendar').fullCalendar({
@@ -58,11 +57,19 @@
                         eventLimit: true, // allow "more" link when too many events
 
                         events: times,
-                        eventClick: function(info) {
-                            let url = "<%= request.getContextPath()%>/logged/patient/scheduling-settime?idconsultation="+1;
-                            let a = document.createElement('a');
-                            a.href = url;
-                            a.click();
+                        eventClick: function (info) {
+
+                            if (info.idConsultation) {
+                                $.ajax({
+                                    url: "<%= request.getContextPath()%>/logged/patient/addnewtime",
+                                    type: 'post',
+                                    data: {
+                                        idconsultation: info.idConsultation,
+                                        crmDoctor: <%= doctor.getCrm() %>,
+                                    },
+                                });
+
+                            }
                         },
                     });
                 });

@@ -31,7 +31,6 @@ public class DashboardPatientController extends HttpServlet {
         super();
     }
 
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpServletResponse res = (HttpServletResponse) response;
@@ -47,7 +46,6 @@ public class DashboardPatientController extends HttpServlet {
             try {
                 UserRole Tuser = dbContext.getUserRoles().Find("id", users.get(i).getUserRoleId());
                 if (Tuser.getName().equals(UserRole.DOCTOR)) {
-                    System.out.println("Medicos " + users.get(i).getName());
                     doctors.add(users.get(i));
                 }
             } catch (Exception e) {
@@ -58,8 +56,6 @@ public class DashboardPatientController extends HttpServlet {
         request.setAttribute("doctors", doctors);
 
         request.getRequestDispatcher("/views/logged/dashboards/dashboard-patient.jsp").forward(request, response);
-
-
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

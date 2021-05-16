@@ -22,11 +22,12 @@ public class ConsultationEntity {
         period = "";
     }
 
-    public ConsultationEntity(int id, String period, Date date, String userCrm) {
+    public ConsultationEntity(int id, String period, Date date, String userCrm, int idPatient) {
         this.id = id;
         this.period = period;
         this.date = date;
         this.userCrm = userCrm;
+        this.idPatient = idPatient;
     }
 
     public int getIdPatient() {

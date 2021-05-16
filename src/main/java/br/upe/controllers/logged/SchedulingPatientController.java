@@ -70,7 +70,7 @@ public class SchedulingPatientController extends HttpServlet {
         private String dateString = "";
 
         public Consultation(ConsultationEntity c, String datestring) {
-            super(c.getId(), c.getPeriod(), c.getDate(), c.getUserCrm());
+            super(c.getId(), c.getPeriod(), c.getDate(), c.getUserCrm(), c.getIdPatient());
             this.dateString = datestring;
         }
     }
