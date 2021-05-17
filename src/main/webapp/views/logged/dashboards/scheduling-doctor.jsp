@@ -22,12 +22,12 @@
                 })
 
                 console.log("Antes: ", arr)
+                let eColor = "#c7dfda"
 
                 for (value of arr) {
                     const t = value.period.split("-");
                     let iduser = null;
-                    let eColor = "#c7dfda"
-
+                    eColor = "#c7dfda"
                     if (value.idPatient) {
                         iduser = value.idPatient;
                         eColor = "#E97F7F";
@@ -36,6 +36,7 @@
                         title: value.period,
                         start: value.dateString + "T" + t[0],
                         end: value.dateString + "T" + t[1],
+
                         //se o horario estiver agendado criar isso abaixo
                         idPatient: iduser,
                         //namePatient: "",
@@ -53,22 +54,25 @@
                         },
                         defaultDate: Date(),
                         navLinks: true, // can click day/week names to navigate views
-                        editable: true,
                         eventLimit: true, // allow "more" link when too many events
 
                         events: times,
                         eventClick: function (info) {
+                            if(info.color != "#E97F7F"){
+                                if (info.idConsultation) {
+                                    $.ajax({
+                                        url: "<%= request.getContextPath()%>/logged/patient/addnewtime",
+                                        type: 'post',
+                                        data: {
+                                            idconsultation: info.idConsultation,
+                                            crmDoctor: <%= doctor.getCrm() %>,
+                                        },
+                                    });
+                                    alert("Agendamento realizado com sucesso!")
 
-                            if (info.idConsultation) {
-                                $.ajax({
-                                    url: "<%= request.getContextPath()%>/logged/patient/addnewtime",
-                                    type: 'post',
-                                    data: {
-                                        idconsultation: info.idConsultation,
-                                        crmDoctor: <%= doctor.getCrm() %>,
-                                    },
-                                });
-
+                                }
+                            }else {
+                                alert("Esse horário já está reservado por outra pessoa")
                             }
                         },
                     });

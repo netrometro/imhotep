@@ -45,11 +45,18 @@ public class TimesController extends HttpServlet {
 
         for(int i=0; i<consuls.size(); i++){
             if(!u.getCrm().equals(consuls.get(i).getUserCrm())) continue;
-            times.add(new Consultation(consuls.get(i), consuls.get(i).getDate().toString()));
+            if(consuls.get(i).getIdPatient() == 0){
+                times.add(new Consultation(consuls.get(i), consuls.get(i).getDate().toString(), null));
+            }else{
+                User patient = dbContext.getUsers().Find(consuls.get(i).getIdPatient());
+                times.add(new Consultation(consuls.get(i), consuls.get(i).getDate().toString(), patient.getName()));
+            }
+
+
+
         }
 
         String json = this.gson.toJson(times);
-
         PrintWriter out = response.getWriter();
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
@@ -67,10 +74,14 @@ public class TimesController extends HttpServlet {
     private class Consultation extends ConsultationEntity implements Serializable {
 
         private String dateString = "";
+        private String namePatient = "";
 
-        public Consultation(ConsultationEntity c, String datestring) {
+        public Consultation(ConsultationEntity c, String datestring, String namePatient) {
             super(c.getId(), c.getPeriod(), c.getDate(), c.getUserCrm(), c.getIdPatient());
             this.dateString = datestring;
+            this.namePatient = namePatient;
+
         }
+
     }
 }

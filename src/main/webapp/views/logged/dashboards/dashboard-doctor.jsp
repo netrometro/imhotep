@@ -27,12 +27,12 @@
                         eColor = "#E97F7F";
                     }
                     times.push({
-                        title: value.period,
+                        title: value.namePatient,
                         start: value.dateString +"T"+ t[0],
                         end: value.dateString +"T"+ t[1],
                         //se o horario estiver agendado criar isso abaixo
                         idPatient: iduser,
-                        //namePatient: "",
+                        //namePatient: iduser.toString(),
                         color: eColor,
                     });
                 }
@@ -46,7 +46,6 @@
                         },
                         defaultDate: Date(),
                         navLinks: true, // can click day/week names to navigate views
-                        editable: true,
                         eventLimit: true, // allow "more" link when too many events
                         events: times,
                         eventClick: function(info) {
