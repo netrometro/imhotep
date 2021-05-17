@@ -58,6 +58,8 @@
                             }
                         },
                     });
+                    const calendarWeek = document.getElementsByClassName("fc-agendaWeek-button");
+                    calendarWeek[0].click();
                 });
             },
             error: function () {
@@ -74,6 +76,9 @@
         <h2>Horários marcados como livre</h2>
     </div>
     <div id='calendar' style="margin-top: 2em;"></div>
+    <script>
+
+    </script>
 </main>
 <%@include file="/views/includes/footer.jsp" %>
 <%@include file="/views/includes/scripts-js.jsp" %>
