@@ -26,7 +26,6 @@ public class AddNewTimeController extends HttpServlet {
         super();
     }
 
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -48,8 +47,6 @@ public class AddNewTimeController extends HttpServlet {
         c.setIdPatient(u.getId());
 
         dbContext.getConsultations().update(c);
-        response.sendRedirect("/logged/patient/scheduling-doctor.jsp?id=");
-
-        request.getRequestDispatcher("/views/logged/dashboards/dashboard-patient.jsp").forward(request, response);
+        response.sendRedirect("/logged/patient/dashboard-patient.jsp");
     }
 }

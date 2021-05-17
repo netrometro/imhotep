@@ -54,7 +54,6 @@
                                 let a = document.createElement('a');
                                 a.href = url;
                                 a.click();
-
                             }
                         },
                     });

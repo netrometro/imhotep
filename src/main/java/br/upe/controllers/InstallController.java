@@ -46,23 +46,31 @@ public class InstallController extends HttpServlet {
         DateTimeFormatter formatterData = DateTimeFormatter.ofPattern("dd/MM/uuuu");
         String dataFormatada = formatterData.format(agora);
 
-        User user = new User(1, "medico1", "medico1@emial.com", "300200100", dataFormatada, "111", "300200100", 1);
+        User user = new User(1, "Medico1", "medico1@emial.com", "300200100", dataFormatada, "111", "300200100", 1);
         user = dbContext.getUsers().Create(user);
+
+        User patient = new User(1, "Paciente1", "paciente1@emial.com", "333222111", dataFormatada, "111", "0", 3);
+        patient = dbContext.getUsers().Create(patient);
 
         createFakeTimes(dbContext);
     }
 
     private void createFakeTimes(DatabaseContext dbContext) {
         ConsultationEntity nextWeek = generateWeekOfTimes(new int[]{3, 4, 1}, 6);
-        ConsultationEntity currentWeek = generateWeekOfTimes(new int[]{3, 4, 1}, 1);
+        ConsultationEntity currentWeek = generateWeekOfTimes(new int[]{4, 5, 2}, 1);
+        ConsultationEntity currentWeek2 = generateWeekOfTimes(new int[]{3, 4, 1}, 1);
         ConsultationEntity lastWeek = generateWeekOfTimes(new int[]{5, 7, 2}, -6);
 
         nextWeek.setDate(Date.valueOf(LocalDateTime.now().plusDays(7).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))));
         currentWeek.setDate(Date.valueOf(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))));
+        currentWeek2.setDate(Date.valueOf(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))));
         lastWeek.setDate(Date.valueOf(LocalDateTime.now().minusDays(5).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))));
+
+        currentWeek2.setIdPatient(2);
 
         dbContext.getConsultations().Create(nextWeek);
         dbContext.getConsultations().Create(currentWeek);
+        dbContext.getConsultations().Create(currentWeek2);
         dbContext.getConsultations().Create(lastWeek);
     }
 
@@ -74,16 +82,16 @@ public class InstallController extends HttpServlet {
     }
 
     private String generateTimesAdd(int hrs, int days){
-        String strLocalTime2   = ""+
-                LocalDateTime.now().plusDays(days).plusHours(hrs).minusHours(0).format(DateTimeFormatter.ofPattern("HH:mm")) + "-" +
-                LocalDateTime.now().plusDays(days).plusHours(hrs).minusHours(30).format(DateTimeFormatter.ofPattern("HH:mm")) + "";
+        String strLocalTime2 = ""+
+                LocalDateTime.now().plusDays(days).plusHours(hrs).plusMinutes(0).format(DateTimeFormatter.ofPattern("HH:mm")) + "-" +
+                LocalDateTime.now().plusDays(days).plusHours(hrs).plusMinutes(30).format(DateTimeFormatter.ofPattern("HH:mm")) + "";
         return strLocalTime2;
     }
 
     private String generateTimesMinus(int hrs, int days){
-        String strLocalTime2   = ""+
-                LocalDateTime.now().minusDays(days).plusHours(hrs).minusHours(0).format(DateTimeFormatter.ofPattern("HH:mm")) + "-"+
-                LocalDateTime.now().minusDays(days).plusHours(hrs).minusHours(30).format(DateTimeFormatter.ofPattern("HH:mm")) + "";
+        String strLocalTime2 = ""+
+                LocalDateTime.now().minusDays(days).plusHours(hrs).plusMinutes(0).format(DateTimeFormatter.ofPattern("HH:mm")) + "-"+
+                LocalDateTime.now().minusDays(days).plusHours(hrs).plusMinutes(30).format(DateTimeFormatter.ofPattern("HH:mm")) + "";
         return strLocalTime2;
     }
 }
