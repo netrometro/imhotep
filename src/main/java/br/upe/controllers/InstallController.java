@@ -47,6 +47,7 @@ public class InstallController extends HttpServlet {
         String dataFormatada = formatterData.format(agora);
 
         User user = new User(1, "Medico1", "medico1@emial.com", "300200100", dataFormatada, "111", "300200100", 1);
+        user.setSpecialties("Otorrinolaringologia");
         user = dbContext.getUsers().Create(user);
 
         User patient = new User(2, "Paciente1", "paciente1@emial.com", "333222111", dataFormatada, "111", "0", 3);
